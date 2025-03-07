@@ -1,7 +1,9 @@
 import COLORS from './colors'
-import TYPOGRAPHY from './typography'
+import TYPOGRAPHY, { TVariantText } from './typography'
 
-export default {
+export {
   COLORS,
   TYPOGRAPHY
 }
+
+export type { TVariantText }

@@ -1,4 +1,3 @@
-
 const TYPOGRAPHY = {
   h1: {
     fontFamily: 'PTSansCaption-Regular',
@@ -42,6 +41,7 @@ const TYPOGRAPHY = {
     lineHeight: 16,
     fontWeight: '400',
   },
-}
+};
 
-export default TYPOGRAPHY
+export default TYPOGRAPHY;
+export type TVariantText = keyof typeof TYPOGRAPHY

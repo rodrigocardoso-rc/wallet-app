@@ -1,0 +1,28 @@
+import { TouchableOpacity } from "react-native";
+import Text from "../Text";
+import styles from "./styles";
+
+interface IButtonProps {
+  text: string;
+  variant?: 'default' | 'disable' | 'secondary';
+  isLoading?: boolean;
+
+  onPress: () => void;
+}
+
+export default function Button({
+  text,
+  variant = 'default',
+  isLoading,
+  onPress
+}: IButtonProps) {
+
+  return (
+    <TouchableOpacity
+      disabled={variant === 'disable' || isLoading}
+      style={[styles.container, styles[variant]]}
+      onPress={onPress}>
+      <Text variant="h5" color={styles[variant].color}>{text}</Text>
+    </TouchableOpacity>
+  );
+}
