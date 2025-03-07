@@ -1,5 +1,5 @@
 import { ReactElement, useEffect } from "react";
-import { View, Dimensions } from "react-native";
+import { View, Dimensions, SafeAreaView } from "react-native";
 import { useSharedValue, withRepeat, withSpring, withSequence } from "react-native-reanimated";
 
 import SideItensAnimated from "../SideItemsAnimated";
@@ -41,9 +41,9 @@ export default function BackgroundScreen({ animated = false, children }: IBackgr
         dimension={itemDimension}
         position="bottomSide" />
 
-      <View style={styles.overlay}>
+      <SafeAreaView style={styles.overlay}>
         {children}
-      </View>
+      </SafeAreaView>
     </View>
   )
 }
