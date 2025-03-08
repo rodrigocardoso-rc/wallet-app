@@ -1,5 +1,5 @@
 import { createContext, ReactElement, useState } from "react";
-import { ICard } from "../model/Card";
+import { ICard } from "../model/card";
 import {
   getCards as getCardsFromApi,
   createCards as createCardsFromApi

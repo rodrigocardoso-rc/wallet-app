@@ -1,4 +1,4 @@
-import { ICard } from "../../../model/Card"
+import { ICard } from "../../../model/card"
 import { httpGet, httpPost } from "../restAPI"
 
 const CARD_SERVICE = '/cards'
