@@ -1,4 +1,4 @@
-import { TouchableOpacity } from "react-native";
+import { ActivityIndicator, TouchableOpacity } from "react-native";
 import Text from "../Text";
 import styles from "./styles";
 
@@ -22,7 +22,12 @@ export default function Button({
       disabled={variant === 'disable' || isLoading}
       style={[styles.container, styles[variant]]}
       onPress={onPress}>
-      <Text variant="h5" color={styles[variant].color}>{text}</Text>
+      {isLoading ? (
+        <ActivityIndicator size="small" color={styles[variant].color} />
+      ) : (
+        <Text variant="h5" color={styles[variant].color}>{text}</Text>
+      )}
+
     </TouchableOpacity>
   );
 }

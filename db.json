@@ -1,0 +1,25 @@
+{
+  "cards": [
+    {
+      "id": "4ec42ba9-50af-40d2-af90-8312edbd9ca2",
+      "number": "3529 5435 3355 8727",
+      "cvv": "317",
+      "name": "John Doe",
+      "expirationDate": "04/30"
+    },
+    {
+      "id": "0ad4021d-d3e5-40e1-a3ef-1b8db8c1615e",
+      "number": "1234123412341234",
+      "name": "Rodrigo Teste",
+      "expirationDate": "0430",
+      "cvv": "123"
+    },
+    {
+      "id": "a3374222-764a-4b62-beeb-6810165419df",
+      "number": "1234123412341234",
+      "name": "Rodrigo Teste Dois",
+      "expirationDate": "0131",
+      "cvv": "523"
+    }
+  ]
+}
