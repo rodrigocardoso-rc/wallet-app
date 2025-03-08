@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native";
 
 import { Camera } from "../../assets/icons";
 import { ICard } from "../../model/card";
@@ -11,12 +13,13 @@ import {
   validateCardNumber, validateExpirationData,
   validateOwnerName, validateSecurityCode
 } from "../../modules/validators";
-
-import styles from "./styles";
 import { cardNumberApplyMask, expirationDateApplyMask } from "../../modules/mask";
-import { StatusBar } from "expo-status-bar";
 import { generateUUid } from "../../modules/uuid/generateUuid";
 import { createCards } from "../../modules/network/endPoints";
+import { RootStackNavigationProp } from "../../navigator/appNavigation";
+import { SCREENS_NAME } from "../screensName";
+
+import styles from "./styles";
 
 const INITIAL_FORM = {
   cardNumber: '',
@@ -26,6 +29,8 @@ const INITIAL_FORM = {
 }
 
 export default function NewCardScreen() {
+  const navigation = useNavigation<RootStackNavigationProp>();
+
   const [form, setForm] = useState(INITIAL_FORM)
   const [isLoading, setIsLoading] = useState(false)
   const [buttonDisabled, setButtonDisabled] = useState(false)
@@ -69,9 +74,18 @@ export default function NewCardScreen() {
     }
 
     createCards(cardDto)
-      .then((res) => { console.log({ res }) })
+      .then((res) => { goToCardSuccessful(res) })
       .catch((err) => { console.log({ err }) })
       .finally(() => { setIsLoading(false) })
+  }
+
+  function goToCardSuccessful(card: ICard) {
+    navigation.reset({
+      index: 0,
+      routes: [
+        { name: SCREENS_NAME.home },
+        { name: SCREENS_NAME.cardSuccessful, params: { card } }]
+    })
   }
 
   return (

@@ -1,16 +1,19 @@
 import { StyleSheet } from 'react-native'
+import { COLORS } from '../../styles'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 28,
+    paddingHorizontal: 36,
     gap: 10,
   },
-  buttonContainer: {
-    width: '100%',
-    gap: 20,
-    paddingVertical: 20,
+  textContainer: {
+    alignItems: 'center',
+    gap: 10,
+  },
+  text: {
+    color: COLORS.base.white
   }
 })
