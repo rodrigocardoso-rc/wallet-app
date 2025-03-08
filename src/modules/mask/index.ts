@@ -1,7 +1,8 @@
-import { cardNumberApplyMask } from './cardNumber'
+import { cardNumberApplyMask, cardNumbersHideDataApplyMask } from './cardNumber'
 import { expirationDateApplyMask } from './expirationDate'
 
 export {
   cardNumberApplyMask,
-  expirationDateApplyMask
+  cardNumbersHideDataApplyMask,
+  expirationDateApplyMask,
 }

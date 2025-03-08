@@ -3,7 +3,7 @@ import { ColorValue, StyleProp, TextProps, Text as TextRN, TextStyle } from 'rea
 import { COLORS, TVariantText, TYPOGRAPHY } from '../../styles';
 
 interface ITextProps extends TextProps {
-  children: string;
+  children: string | string[];
   variant: TVariantText
   color?: ColorValue
   style?: StyleProp<TextStyle>;

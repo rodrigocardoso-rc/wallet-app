@@ -3,3 +3,9 @@ export function cardNumberApplyMask(value: string) {
 
   return cleanedValue.replace(/(\d{4})(?=\d)/g, '$1 ').trim()
 }
+
+export function cardNumbersHideDataApplyMask(value: string) {
+  const protectedValue = value.replace(/\d(?=\d{4})/g, "*")
+
+  return protectedValue.replace(/(.{4})/g, "$1 ")
+}
