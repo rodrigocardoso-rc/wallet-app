@@ -1,9 +1,9 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { TYPOGRAPHY, TVariantText } from '../../styles';
-import { useFocusEffect, useIsFocused } from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
 
 interface ITextProps {
   variant: TVariantText;
@@ -20,6 +20,7 @@ export default function TitleAnimated({ variant, fromBottom, style, children }: 
   useEffect(() => {
     if (!isFocused) 
       return
+
     textPosition.value = withTiming(0, {
       duration: 500,
       easing: Easing.bounce

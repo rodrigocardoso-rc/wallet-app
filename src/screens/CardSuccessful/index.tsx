@@ -6,6 +6,9 @@ import TitleAnimated from "../../components/TitleAnimated"
 import CardData from "../../components/CardData"
 import Text from "../../components/Text"
 import Button from "../../components/Button"
+import { useNavigation } from "@react-navigation/native"
+import { RootStackNavigationProp } from "../../navigator/appNavigation"
+import { SCREENS_NAME } from "../screensName"
 
 export interface ICardSuccessfulScreenParams {
   card: ICard
@@ -13,6 +16,8 @@ export interface ICardSuccessfulScreenParams {
 
 
 export default function CardSuccessfulScreen() {
+  const navigation = useNavigation<RootStackNavigationProp>();
+
   const card: ICard = {
     id: '',
     number: "1234123412341234",
@@ -22,7 +27,7 @@ export default function CardSuccessfulScreen() {
   }
 
   function onPressNext() {
-    console.log('onPressNext')
+    navigation.navigate(SCREENS_NAME.home)
   }
 
   return (

@@ -5,13 +5,15 @@ import OutlinedHeader from "../components/OutlinedHeader";
 import NewCardScreen from "../screens/NewCard";
 import { SCREENS_NAME } from "../screens/screensName";
 import CardSuccessfulScreen, { ICardSuccessfulScreenParams } from "../screens/CardSuccessful";
+import LoadingWalletScreen from "../screens/LoadingWallet";
 
 const Stack = createNativeStackNavigator();
 
 type RootStackParamList = {
   [SCREENS_NAME.home]: undefined;
   [SCREENS_NAME.newCard]: undefined;
-  [SCREENS_NAME.cardSuccessful]: ICardSuccessfulScreenParams
+  [SCREENS_NAME.cardSuccessful]: ICardSuccessfulScreenParams,
+  [SCREENS_NAME.loadingWallet]: undefined,
 };
 
 export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -41,6 +43,11 @@ export default function AppNavigation() {
             header: (props) => <OutlinedHeader title='Cadastro' {...props} />
           }}
           component={CardSuccessfulScreen} />
+
+        <Stack.Screen
+          name={SCREENS_NAME.loadingWallet}
+          options={{ headerShown: false }}
+          component={LoadingWalletScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -2,5 +2,6 @@
 export const SCREENS_NAME = {
   home: 'HomeScreen',
   newCard: 'NewCardScreen',
-  cardSuccessful: 'CardSuccessfulScreen'
+  cardSuccessful: 'CardSuccessfulScreen',
+  loadingWallet: 'LoadingWalletScreen'
 }

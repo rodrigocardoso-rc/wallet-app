@@ -23,8 +23,8 @@ export default function BackgroundScreen({ animated = false, children }: IBackgr
   function createAnimation() {
     itemDimension.value = withRepeat(
       withSequence(
+        withSpring(width, { duration: 1000 }),
         withSpring(width + width / 5, { duration: 1000 }),
-        withSpring(width, { duration: 1000 })
       ),
       -1,
       true

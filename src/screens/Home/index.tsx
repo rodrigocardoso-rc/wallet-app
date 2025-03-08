@@ -14,6 +14,10 @@ export default function HomeScreen() {
   const navigation = useNavigation<RootStackNavigationProp>();
 
   function onPressMyCards() {
+    navigation.navigate(SCREENS_NAME.loadingWallet)
+  }
+
+  function onPressNewCard() {
     navigation.navigate(SCREENS_NAME.newCard)
   }
 
@@ -34,7 +38,7 @@ export default function HomeScreen() {
           <Button
             variant={"secondary"}
             text={"Cadastrar cartão"}
-            onPress={onPressMyCards} />
+            onPress={onPressNewCard} />
         </View>
       </View>
     </BackgroundAnimated>
