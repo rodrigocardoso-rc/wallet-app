@@ -1,6 +1,6 @@
 import { createContext, ReactElement, useState } from "react";
 import { ICard } from "../model";
-import { Cards } from "../services1"
+import { Cards } from "../services"
 
 interface ICardsContext {
   cardsList: ICard[];

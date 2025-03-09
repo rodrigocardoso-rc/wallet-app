@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
-import { LargeWallet, SmallWallet } from "../../assets/Images";
+import { LargeWallet, SmallWallet } from "../../assets/images1";
 import { CardsContext } from "../../contexts/CardsContext";
 import { BackgroundScreen } from "../../components";
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
