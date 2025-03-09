@@ -1,13 +1,18 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
-import HomeScreen from "../screens/Home";
-import HeaderOutlined from "../components/HeaderOutlined";
-import NewCardScreen from "../screens/NewCard";
-import { SCREENS_NAME } from "../screens/screensName";
-import CardSuccessfulScreen, { ICardSuccessfulScreenParams } from "../screens/CardSuccessful";
-import LoadingWalletScreen, { ILoadingWalletScreenParams } from "../screens/LoadingWallet";
-import CardsListScreen from "../screens/CardsList";
-import HeaderFilled from "../components/HeaderFilled";
+
+import {
+  CardsListScreen,
+  HomeScreen,
+  LoadingWalletScreen,
+  NewCardScreen,
+  CardSuccessfulScreen,
+} from '../screens'
+import { SCREENS_NAME } from "../screens"
+
+import { HeaderOutlined, HeaderFilled } from "../components"
+import { ICardSuccessfulScreenParams } from "../screens/CardSuccessful"
+import { ILoadingWalletScreenParams } from "../screens/LoadingWallet"
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +26,7 @@ export type RootStackParamList = {
 
 export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-export default function AppNavigation() {
+export default function AppNavigator() {
 
   return (
     <NavigationContainer>

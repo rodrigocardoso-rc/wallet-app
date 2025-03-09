@@ -2,13 +2,13 @@ import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 
-import { SCREENS_NAME } from "../screensName";
-import Button from "../../components/Button";
-import TitleAnimated from "../../components/TitleAnimated";
-import BackgroundAnimated from "../../components/BackgroundScreen";
-import { RootStackNavigationProp } from "../../navigator/appNavigation";
+import { SCREENS_NAME } from "../";
+import { Button, TitleAnimated, BackgroundScreen } from "../../components";
+import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 
 import styles from "./styles";
+
+export const NAME_HOME_SCREEN = 'HomeScreen'
 
 export default function HomeScreen() {
   const navigation = useNavigation<RootStackNavigationProp>();
@@ -22,7 +22,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <BackgroundAnimated>
+    <BackgroundScreen>
       <StatusBar hidden />
 
       <View style={styles.container}>
@@ -41,6 +41,6 @@ export default function HomeScreen() {
             onPress={onPressNewCard} />
         </View>
       </View>
-    </BackgroundAnimated>
+    </BackgroundScreen>
   )
 }

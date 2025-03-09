@@ -1,7 +1,11 @@
-import { lockOrientation } from "./lockOrientation";
-import { unLockOrientation } from "./unLockOrientation";
+import * as ScreenOrientation from 'expo-screen-orientation';
 
-export {
-  lockOrientation,
-  unLockOrientation
+function lockOrientation() {
+  return ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
 }
+
+function unLockOrientation() {
+  return ScreenOrientation.unlockAsync();
+}
+
+export default { lockOrientation, unLockOrientation }

@@ -2,18 +2,20 @@ import { useContext, useEffect, useState } from "react";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
-import { LargeWallet, SmallWallet } from "../../assets/images";
-import { CardsContext } from "../../context/cardsContext";
-import BackgroundScreen from "../../components/BackgroundScreen";
-import { RootStackNavigationProp, RootStackParamList } from "../../navigator/appNavigation"
+import { LargeWallet, SmallWallet } from "../../assets/Images";
+import { CardsContext } from "../../contexts/CardsContext";
+import { BackgroundScreen } from "../../components";
+import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
 
 import styles from "./styles";
-import { SCREENS_NAME } from "../screensName"
+import { SCREENS_NAME } from "../"
 import { FlashMessage } from "../../modules";
 
 export interface ILoadingWalletScreenParams {
   syncFromApi?: boolean
 }
+
+export const NAME_LOADING_WALLET_SCREEN = 'LoadingWalletScreen'
 
 type TRouteParams = RouteProp<RootStackParamList, SCREENS_NAME.loadingWallet>;
 

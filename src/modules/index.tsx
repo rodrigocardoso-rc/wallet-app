@@ -1,6 +1,7 @@
-import * as FlashMessage from "./flashMessage";
-
+import * as FlashMessage from "./FlashMessage";
+import Orientation from "./Orientation";
 
 export {
-  FlashMessage
+  FlashMessage,
+  Orientation
 }

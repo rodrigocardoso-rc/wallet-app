@@ -1,18 +1,18 @@
 import { View } from "react-native"
-import BackgroundScreen from "../../components/BackgroundScreen"
-import { ICard } from "../../model/card"
-import styles from "./styles"
-import TitleAnimated from "../../components/TitleAnimated"
-import CardData from "../../components/CardData"
-import Text from "../../components/Text"
-import Button from "../../components/Button"
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
-import { RootStackNavigationProp, RootStackParamList } from "../../navigator/appNavigation"
-import { SCREENS_NAME } from "../screensName"
+
+import { ICard } from "../../model"
+import { BackgroundScreen, TitleAnimated, CardData, Text, Button } from "../../components"
+import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
+import { SCREENS_NAME } from "../"
+
+import styles from "./styles"
 
 export interface ICardSuccessfulScreenParams {
   card: ICard
 }
+
+export const NAME_CARD_SUCCESSFUL_SCREEN = 'CardSuccessfulScreen'
 
 type TRouteParams = RouteProp<RootStackParamList, SCREENS_NAME.cardSuccessful>;
 

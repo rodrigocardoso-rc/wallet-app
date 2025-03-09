@@ -6,25 +6,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 
-import { Camera } from "../../assets/icons";
-import { ICard } from "../../model/card";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import BackgroundScreen from "../../components/BackgroundScreen";
-import TitleAnimated from "../../components/TitleAnimated";
+import { Camera } from "../../assets/Icons";
+import { ICard } from "../../model";
 import {
-  validateCardNumber,
-  validateExpirationData,
-  validateOwnerName,
-  validateSecurityCode,
-} from "../../modules/validators";
-import { cardNumberApplyMask, expirationDateApplyMask } from "../../modules/mask";
-import { generateUUid } from "../../modules/uuid";
-import { RootStackNavigationProp } from "../../navigator/appNavigation";
-import { SCREENS_NAME } from "../screensName";
+  Input,
+  Button,
+  BackgroundScreen,
+  TitleAnimated
+} from "../../components";
+import { Validators, Mask } from '../../utils'
+import { generateUUid } from "../../modules/Uuid";
+import { RootStackNavigationProp } from "../../navigators/AppNavigator";
+import { SCREENS_NAME } from "../";
 
 import styles from "./styles";
-import { CardsContext } from "../../context/cardsContext";
+import { CardsContext } from "../../contexts/CardsContext";
 import { FlashMessage } from "../../modules";
 
 interface IFormData {
@@ -34,26 +30,28 @@ interface IFormData {
   securityCode: string;
 }
 
+export const NAME_NEW_CARD_SCREEN = 'NewCardScreen'
+
 const validationSchema = yup.object().shape({
   cardNumber: yup
     .string()
     .test("valid-card", "Número de cartão inválido",
-      (value) => validateCardNumber(value || ""))
+      (value) => Validators.cardNumber(value || ""))
     .required("Campo obrigatório"),
   ownerName: yup
     .string()
     .test("valid-name", "Nome inválido",
-      (value) => validateOwnerName(value || ""))
+      (value) => Validators.ownerName(value || ""))
     .required("Campo obrigatório"),
   expirationData: yup
     .string()
     .test("valid-date", "Data de vencimento inválida",
-      (value) => validateExpirationData(value || ""))
+      (value) => Validators.expirationDate(value || ""))
     .required("Campo obrigatório"),
   securityCode: yup
     .string()
     .test("valid-cvv", "Código inválido",
-      (value) => validateSecurityCode(value || ""))
+      (value) => Validators.securityCode(value || ""))
     .required("Campo obrigatório"),
 });
 
@@ -142,7 +140,7 @@ export default function NewCardScreen() {
                 ref={(ref) => (inputsRef.current.cardNumber = ref)}
                 autoFocus
                 label="Número do cartão"
-                value={cardNumberApplyMask(value)}
+                value={Mask.applyMaskCardNumber(value)}
                 maxLength={19}
                 keyboardType="numeric"
                 icon={{
@@ -182,7 +180,7 @@ export default function NewCardScreen() {
                 <Input
                   ref={(ref) => (inputsRef.current.expirationData = ref)}
                   label="Vencimento"
-                  value={expirationDateApplyMask(value)}
+                  value={Mask.applyMaskExpirationDate(value)}
                   placeholder="00/00"
                   keyboardType="number-pad"
                   maxLength={5}

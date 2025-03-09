@@ -1,7 +1,7 @@
 import { TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { ArrowLeft } from "../../assets/icons";
+import { ArrowLeft } from "../../assets/Icons";
 import Text from "../Text";
 import styles from "./styles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

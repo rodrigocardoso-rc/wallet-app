@@ -1,23 +1,23 @@
 import styles from "./styles";
 import { View } from "react-native";
-import Text from "../../components/Text";
+import { Text, CardData, Button } from "../../components";
 import { useContext, useState } from "react";
-import { CardsContext } from "../../context/cardsContext";
-import CardData from "../../components/CardData";
-import { ICard } from "../../model/card";
-import Button from "../../components/Button";
-import { getTypeCard } from "../../modules/cardUtils";
+import { CardsContext } from "../../contexts/CardsContext";
+import { ICard } from "../../model";
+import { Card } from "../../utils";
 
 interface ICardListTyped extends ICard {
   type: 'green' | 'black'
 }
+
+export const NAME_CARDS_LIST_SCREEN = 'CardsListScreen'
 
 export default function CardsListScreen() {
   const { cardsList } = useContext(CardsContext)
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
   const [cardListTyped, setCardListTyped] = useState<ICardListTyped[]>(
-    cardsList.map((card, idx) => ({ ...card, type: getTypeCard(idx) })))
+    cardsList.map((card, idx) => ({ ...card, type: Card.getCardType(idx) })))
 
 
   function swapCards(cards: ICardListTyped[], idx: number): ICardListTyped[] {

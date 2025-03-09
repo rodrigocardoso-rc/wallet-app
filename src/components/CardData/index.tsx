@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { TouchableOpacity, View, Dimensions, Pressable, TouchableWithoutFeedback } from "react-native";
+import { View, Dimensions, TouchableWithoutFeedback } from "react-native";
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from "react-native-reanimated";
-import { ICard } from "../../model/card";
+import { Mask } from '../../utils'
+import { ICard } from "../../model";
 import Text from '../Text';
 import styles from "./styles";
-import { cardNumbersHideDataApplyMask, expirationDateApplyMask } from "../../modules/mask";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface ICardDataProps {
@@ -97,13 +97,13 @@ export default function CardData({
           <Text
             variant={"paragraph"}
             color={styles[type].color}>
-            {cardNumbersHideDataApplyMask(number)}
+            {Mask.applyMaskHideCardNumber(number)}
           </Text>
 
           <Text
             variant={"paragraph"}
             color={styles[type].color}>
-            Validade: {expirationDateApplyMask(expirationDate)}
+            Validade: {Mask.applyMaskExpirationDate(expirationDate)}
           </Text>
         </View>
       </Animated.View>

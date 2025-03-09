@@ -1,7 +1,8 @@
-import FlashMessage, { showMessage, hideMessage, MessageOptions } from "react-native-flash-message";
-import styles from "./styles";
-import { TYPOGRAPHY } from "../../styles";
 import { TextStyle } from "react-native";
+import FlashMessage, { showMessage, hideMessage, MessageOptions } from "react-native-flash-message";
+
+import { TYPOGRAPHY } from "../../styles";
+import styles from "./styles";
 
 interface IShowMessage {
   message: string,
@@ -11,7 +12,6 @@ interface IShowMessage {
 const DURATION = 3 * 1000
 
 function show({ message, type }: IShowMessage) {
-
   const options: MessageOptions = {
     message: message,
     style: [styles.container, styles[type]],
@@ -23,9 +23,8 @@ function show({ message, type }: IShowMessage) {
 }
 
 function hide() {
-  return hideMessage
+  return hideMessage()
 }
-
 
 export {
   show,

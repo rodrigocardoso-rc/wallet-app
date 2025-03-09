@@ -6,20 +6,6 @@
       "cvv": "317",
       "name": "John Doe",
       "expirationDate": "04/30"
-    },
-    {
-      "id": "0ad4021d-d3e5-40e1-a3ef-1b8db8c1615e",
-      "number": "1234123412341234",
-      "name": "Rodrigo Teste",
-      "expirationDate": "0430",
-      "cvv": "123"
-    },
-    {
-      "id": "a3374222-764a-4b62-beeb-6810165419df",
-      "number": "1234123412341234",
-      "name": "Rodrigo Teste Dois",
-      "expirationDate": "0131",
-      "cvv": "523"
     }
   ]
 }

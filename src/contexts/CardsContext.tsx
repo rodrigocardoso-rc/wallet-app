@@ -1,9 +1,6 @@
 import { createContext, ReactElement, useState } from "react";
-import { ICard } from "../model/card";
-import {
-  getCards as getCardsFromApi,
-  createCards as createCardsFromApi
-} from "../modules/network/endPoints";
+import { ICard } from "../model";
+import { Cards } from "../services"
 
 interface ICardsContext {
   cardsList: ICard[];
@@ -24,14 +21,14 @@ export function CardsProvider({ children }: { children: ReactElement | ReactElem
 
   async function fetchCards(syncFromApi?: boolean) {
     if (!cardsList.length || syncFromApi) {
-      const newList = await getCardsFromApi()
+      const newList = await Cards.getCards()
 
       setCardsList(newList)
     }
   }
 
   async function addCard(card: ICard) {
-    const newCard = await createCardsFromApi(card)
+    const newCard = await Cards.createCards(card)
     setCardsList([...cardsList, newCard])
 
     return newCard

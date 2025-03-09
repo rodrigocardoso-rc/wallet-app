@@ -1,6 +1,6 @@
-import COLORS from './colors'
-import TYPOGRAPHY, { TVariantText } from './typography'
-import SHADOW from './shadow'
+import COLORS from './Colors'
+import TYPOGRAPHY, { TVariantText } from './Typography'
+import SHADOW from './Shadow'
 
 export {
   COLORS,
