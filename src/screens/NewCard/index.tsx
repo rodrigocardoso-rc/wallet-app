@@ -2,8 +2,6 @@ import { useContext, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 
 import { Camera } from "../../assets/icons";
@@ -14,14 +12,14 @@ import {
   BackgroundScreen,
   TitleAnimated
 } from "../../components";
-import { Validators, Mask } from '../../utils'
+import { Mask } from '../../utils'
 import { Uuid } from "../../modules";
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 import { SCREENS_NAME } from "../ScreensName";
 
 import styles from "./styles";
 import { CardsContext } from "../../contexts/CardsContext";
-import { FlashMessage } from "../../modules";
+import { FlashMessage, FormValidator } from "../../modules";
 
 interface IFormData {
   cardNumber: string;
@@ -29,29 +27,6 @@ interface IFormData {
   expirationData: string;
   securityCode: string;
 }
-
-const validationSchema = yup.object().shape({
-  cardNumber: yup
-    .string()
-    .test("valid-card", "Número de cartão inválido",
-      (value) => Validators.cardNumber(value || ""))
-    .required("Campo obrigatório"),
-  ownerName: yup
-    .string()
-    .test("valid-name", "Nome inválido",
-      (value) => Validators.ownerName(value || ""))
-    .required("Campo obrigatório"),
-  expirationData: yup
-    .string()
-    .test("valid-date", "Data de vencimento inválida",
-      (value) => Validators.expirationDate(value || ""))
-    .required("Campo obrigatório"),
-  securityCode: yup
-    .string()
-    .test("valid-cvv", "Código inválido",
-      (value) => Validators.securityCode(value || ""))
-    .required("Campo obrigatório"),
-});
 
 export default function NewCardScreen() {
   const { addCard } = useContext(CardsContext);
@@ -65,7 +40,7 @@ export default function NewCardScreen() {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: FormValidator.resolver(FormValidator.formCardValidationSchema),
     mode: "onChange",
     defaultValues: {
       cardNumber: "",
