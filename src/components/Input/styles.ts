@@ -12,6 +12,10 @@ export default StyleSheet.create({
     gap: 4,
     alignItems: 'flex-start',
   },
+  containerError: {
+    borderWidth: 2,
+    borderColor: COLORS.alert.yellow
+  },
   label: {
     color: COLORS.base.white
   },
@@ -39,5 +43,8 @@ export default StyleSheet.create({
   },
   placeholder: {
     color: COLORS.text.grey
+  },
+  error: {
+    color: COLORS.alert.yellow
   }
 })

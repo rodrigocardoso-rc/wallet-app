@@ -1,7 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Controller, useForm } from "react-hook-form";
 
 import { Camera } from "../../assets/icons";
 import { ICard } from "../../model/card";
@@ -10,8 +13,10 @@ import Button from "../../components/Button";
 import BackgroundScreen from "../../components/BackgroundScreen";
 import TitleAnimated from "../../components/TitleAnimated";
 import {
-  validateCardNumber, validateExpirationData,
-  validateOwnerName, validateSecurityCode
+  validateCardNumber,
+  validateExpirationData,
+  validateOwnerName,
+  validateSecurityCode,
 } from "../../modules/validators";
 import { cardNumberApplyMask, expirationDateApplyMask } from "../../modules/mask";
 import { generateUUid } from "../../modules/uuid";
@@ -21,63 +26,72 @@ import { SCREENS_NAME } from "../screensName";
 import styles from "./styles";
 import { CardsContext } from "../../context/cardsContext";
 
-const INITIAL_FORM = {
-  cardNumber: '',
-  ownerName: '',
-  expirationData: '',
-  securityCode: ''
+interface IFormData {
+  cardNumber: string;
+  ownerName: string;
+  expirationData: string;
+  securityCode: string;
 }
 
+const validationSchema = yup.object().shape({
+  cardNumber: yup
+    .string()
+    .test("valid-card", "Número de cartão inválido",
+      (value) => validateCardNumber(value || ""))
+    .required("Campo obrigatório"),
+  ownerName: yup
+    .string()
+    .test("valid-name", "Nome inválido",
+      (value) => validateOwnerName(value || ""))
+    .required("Campo obrigatório"),
+  expirationData: yup
+    .string()
+    .test("valid-date", "Data de vencimento inválida",
+      (value) => validateExpirationData(value || ""))
+    .required("Campo obrigatório"),
+  securityCode: yup
+    .string()
+    .test("valid-cvv", "Código inválido",
+      (value) => validateSecurityCode(value || ""))
+    .required("Campo obrigatório"),
+});
+
 export default function NewCardScreen() {
-  const { addCard } = useContext(CardsContext)
+  const { addCard } = useContext(CardsContext);
   const navigation = useNavigation<RootStackNavigationProp>();
+  const inputsRef = useRef<any>({});
 
-  const [form, setForm] = useState(INITIAL_FORM)
-  const [isLoading, setIsLoading] = useState(false)
-  const [buttonDisabled, setButtonDisabled] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(checkCanCreate, [form])
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+    mode: "onChange",
+    defaultValues: {
+      cardNumber: "",
+      ownerName: "",
+      expirationData: "",
+      securityCode: "",
+    },
+  });
 
-  function onPressCameraIcon() {
-    // TODO: Implements Camera feature
-  }
-
-  function handleInputText(name: string, newValue: string) {
-    setForm((oldValue) => { return { ...oldValue, [name]: newValue } })
-  }
-
-  function checkCanCreate() {
-    const { cardNumber, ownerName, expirationData, securityCode } = form;
-
-    const isInvalid = !(
-      validateCardNumber(cardNumber) &&
-      validateOwnerName(ownerName) &&
-      validateExpirationData(expirationData) &&
-      validateSecurityCode(securityCode)
-    )
-
-    setButtonDisabled(isInvalid)
-  }
-
-  function onPressNext() {
-    createCard()
-  }
-
-  function createCard() {
-    setIsLoading(true)
-
+  function createCard(form: IFormData) {
+    setIsLoading(true);
     const cardDto: ICard = {
       id: generateUUid(),
       number: form.cardNumber,
       name: form.ownerName,
       expirationDate: form.expirationData,
       cvv: form.securityCode,
-    }
+    };
 
     addCard(cardDto)
-      .then((res) => { goToCardSuccessful(res) })
-      .catch((err) => { console.log({ err }) })
-      .finally(() => { setIsLoading(false) })
+      .then(() => goToCardSuccessful(cardDto))
+      .catch(console.log)
+      .finally(() => setIsLoading(false));
   }
 
   function goToCardSuccessful(card: ICard) {
@@ -85,72 +99,114 @@ export default function NewCardScreen() {
       index: 0,
       routes: [
         { name: SCREENS_NAME.home },
-        { name: SCREENS_NAME.cardSuccessful, params: { card } }]
-    })
+        { name: SCREENS_NAME.cardSuccessful, params: { card } },
+      ],
+    });
+  }
+
+  function onSubmitEditing(next: string) {
+    inputsRef.current[next]?.focus();
+  }
+
+  function onPressCameraIcon() {
+    // TODO: Implements Camera feature
   }
 
   return (
     <BackgroundScreen>
       <StatusBar hidden />
+      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.keyBoardContainer}>
+        <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
+          <TitleAnimated fromBottom variant="h1" style={styles.title}>Wallet Test</TitleAnimated>
 
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.keyBoardContainer}>
-        <ScrollView
-          contentContainerStyle={styles.container}
-          keyboardShouldPersistTaps="handled">
-          <TitleAnimated fromBottom variant="h1" style={styles.title}>
-            Wallet Test
-          </TitleAnimated>
+          <Controller
+            control={control}
+            name="cardNumber"
+            render={({ field: { onChange, value } }) => (
+              <Input
+                ref={(ref) => (inputsRef.current.cardNumber = ref)}
+                autoFocus
+                label="Número do cartão"
+                value={cardNumberApplyMask(value)}
+                maxLength={19}
+                keyboardType="numeric"
+                icon={{
+                  Component: <Camera />,
+                  onPress: onPressCameraIcon
+                }}
+                onChangeText={(newValue) => onChange(newValue.replace(/\D/g, ""))}
+                error={errors.cardNumber?.message}
+                onSubmitEditing={() => onSubmitEditing("ownerName")}
+              />
+            )}
+          />
 
-          <Input
-            label={'Numero do cartão'}
-            value={cardNumberApplyMask(form.cardNumber)}
-            maxLength={19}
-            inputMode={"numeric"}
-            keyboardType={"numeric"}
-            icon={{
-              Component: <Camera />,
-              onPress: onPressCameraIcon,
-            }}
-            onChangeText={(newValue) => handleInputText('cardNumber', newValue.replace(/\D/g, ""))} />
-
-          <Input
-            label={'Nome do titular do cartão'}
-            value={form.ownerName}
-            keyboardType={"default"}
-            autoCapitalize={"words"}
-            autoCorrect={false}
-            onChangeText={(newValue) => handleInputText('ownerName', newValue)} />
+          <Controller
+            control={control}
+            name="ownerName"
+            render={({ field: { onChange, value } }) => (
+              <Input
+                ref={(ref) => (inputsRef.current.ownerName = ref)}
+                label="Nome do titular do cartão"
+                value={value}
+                autoCapitalize="words"
+                autoCorrect={false}
+                autoComplete="off"
+                error={errors.ownerName?.message}
+                onChangeText={onChange}
+                onSubmitEditing={() => onSubmitEditing("expirationData")}
+              />
+            )}
+          />
 
           <View style={styles.mediumInputsContainer}>
-            <Input
-              label={'Vencimento'}
-              value={expirationDateApplyMask(form.expirationData)}
-              placeholder={'00/00'}
-              keyboardType={"number-pad"}
-              maxLength={5}
-              size={"medium"}
-              onChangeText={(newValue) => handleInputText('expirationData', newValue)} />
+            <Controller
+              control={control}
+              name="expirationData"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  ref={(ref) => (inputsRef.current.expirationData = ref)}
+                  label="Vencimento"
+                  value={expirationDateApplyMask(value)}
+                  placeholder="00/00"
+                  keyboardType="number-pad"
+                  maxLength={5}
+                  size="medium"
+                  onChangeText={onChange}
+                  error={errors.expirationData?.message}
+                  onSubmitEditing={() => onSubmitEditing("securityCode")}
+                />
+              )}
+            />
 
-            <Input
-              label={'Código de segurança'}
-              value={form.securityCode}
-              placeholder={'***'}
-              keyboardType={"number-pad"}
-              maxLength={3}
-              size={"medium"}
-              onChangeText={(newValue) => handleInputText('securityCode', newValue)} />
+            <Controller
+              control={control}
+              name="securityCode"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  ref={(ref) => (inputsRef.current.securityCode = ref)}
+                  label="Código de segurança"
+                  value={value}
+                  placeholder="***"
+                  keyboardType="number-pad"
+                  maxLength={3}
+                  size="medium"
+                  onChangeText={onChange}
+                  error={errors.securityCode?.message}
+                  onSubmitEditing={handleSubmit(createCard)}
+                />
+              )}
+            />
           </View>
 
           <Button
             isLoading={isLoading}
-            variant={buttonDisabled ? 'disable' : 'default'}
-            text={"Avançar"}
-            onPress={onPressNext} />
+            variant={!isValid ? "disable" : "default"}
+            disabled={!isValid}
+            text="Avançar"
+            onPress={handleSubmit(createCard)} />
         </ScrollView>
       </KeyboardAvoidingView>
     </BackgroundScreen>
-  )
+  );
 }
-

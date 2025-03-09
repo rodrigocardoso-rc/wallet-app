@@ -7,6 +7,7 @@ import { useEffect } from "react";
 interface IButtonProps {
   text: string;
   variant?: 'default' | 'disable' | 'secondary';
+  disabled?: boolean;
   isAnimated?: boolean;
   isLoading?: boolean;
 
@@ -16,6 +17,7 @@ interface IButtonProps {
 export default function Button({
   text,
   variant = 'default',
+  disabled,
   isAnimated,
   isLoading,
   onPress
@@ -42,7 +44,7 @@ export default function Button({
   return (
     <Animated.View style={buttonStyle}>
       <TouchableOpacity
-        disabled={variant === 'disable' || isLoading}
+        disabled={disabled || isLoading}
         style={[styles.container, styles[variant]]}
         onPress={onPress}>
         {isLoading ? (
