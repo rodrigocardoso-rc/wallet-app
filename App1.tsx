@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-import { CardsProvider } from './src/contexts1';
-import { AppNavigator } from './src/navigators1';
-import { FlashMessage, Orientation } from './src/modules1';
+import { CardsProvider } from './src/contexts';
+import { AppNavigator } from './src/navigators';
+import { FlashMessage, Orientation } from './src/modules';
 
 export default function App() {
   useEffect(() => {
