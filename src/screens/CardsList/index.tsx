@@ -3,25 +3,21 @@ import { View } from "react-native";
 import Text from "../../components/Text";
 import { useContext, useState } from "react";
 import { CardsContext } from "../../context/cardsContext";
-import CardData from "../../components/CardData";
+import CardData, { OVERLAP } from "../../components/CardData";
 import { ICard } from "../../model/card";
 import Button from "../../components/Button";
-import AnimatedCard, { OVERLAP } from "../../components/CardData";
+import { getTypeCard } from "../../modules/cardUtils";
 
 interface ICardListTyped extends ICard {
   type: 'green' | 'black'
 }
-
 
 export default function CardsListScreen() {
   const { cardsList } = useContext(CardsContext)
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
   const [cardListTyped, setCardListTyped] = useState<ICardListTyped[]>(
-    cardsList.map((card, idx) => ({
-      ...card,
-      type: (idx % 2) ? 'green' : 'black'
-    })))
+    cardsList.map((card, idx) => ({ ...card, type: getTypeCard(idx) })))
 
 
   function swapCards(cards: ICardListTyped[], idx: number): ICardListTyped[] {
@@ -52,7 +48,7 @@ export default function CardsListScreen() {
     const { id, type } = card
 
     return (
-      <AnimatedCard
+      <CardData
         key={id}
         card={card}
         type={type}
