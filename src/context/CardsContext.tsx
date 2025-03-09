@@ -19,7 +19,7 @@ const INITIAL_CONTEXT: ICardsContext = {
 
 export const CardsContext = createContext<ICardsContext>(INITIAL_CONTEXT);
 
-export function CardsProvider({ children }: { children: ReactElement }) {
+export function CardsProvider({ children }: { children: ReactElement | ReactElement[] }) {
   const [cardsList, setCardsList] = useState<ICard[]>([]);
 
   async function fetchCards(syncFromApi?: boolean) {

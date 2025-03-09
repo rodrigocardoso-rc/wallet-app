@@ -25,6 +25,7 @@ import { SCREENS_NAME } from "../screensName";
 
 import styles from "./styles";
 import { CardsContext } from "../../context/cardsContext";
+import { FlashMessage } from "../../modules";
 
 interface IFormData {
   cardNumber: string;
@@ -78,20 +79,34 @@ export default function NewCardScreen() {
     },
   });
 
-  function createCard(form: IFormData) {
-    setIsLoading(true);
-    const cardDto: ICard = {
-      id: generateUUid(),
-      number: form.cardNumber,
-      name: form.ownerName,
-      expirationDate: form.expirationData,
-      cvv: form.securityCode,
-    };
+  async function createCard(form: IFormData) {
+    try {
+      setIsLoading(true);
 
-    addCard(cardDto)
-      .then(() => goToCardSuccessful(cardDto))
-      .catch(console.log)
-      .finally(() => setIsLoading(false));
+      const cardDto: ICard = {
+        id: generateUUid(),
+        number: form.cardNumber,
+        name: form.ownerName,
+        expirationDate: form.expirationData,
+        cvv: form.securityCode,
+      };
+
+      await addCard(cardDto);
+
+      FlashMessage.show({
+        message: 'Cartão cadastrado com sucesso',
+        type: 'success'
+      });
+
+      goToCardSuccessful(cardDto);
+    } catch (error) {
+      FlashMessage.show({
+        message: 'Ocorreu um problema ao criar o cartão. Tente novamente mais tarde',
+        type: 'danger'
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   function goToCardSuccessful(card: ICard) {

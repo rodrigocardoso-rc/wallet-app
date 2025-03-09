@@ -9,6 +9,7 @@ import { RootStackNavigationProp, RootStackParamList } from "../../navigator/app
 
 import styles from "./styles";
 import { SCREENS_NAME } from "../screensName"
+import { FlashMessage } from "../../modules";
 
 export interface ILoadingWalletScreenParams {
   syncFromApi?: boolean
@@ -24,19 +25,28 @@ export default function LoadingWalletScreen() {
 
   const [canNavigate, setCanNavigate] = useState(false)
 
-  useEffect(fetchCardsList, [])
+  useEffect(() => { fetchCardsList() }, [])
   useEffect(() => {
     if (canNavigate)
-      execAnimation()
+      execAnimation(navigateToCardsList)
   }, [canNavigate]);
 
-  function fetchCardsList() {
-    fetchCards(params?.syncFromApi)
-      .then(() => { setCanNavigate(true) })
-      .catch((err) => { console.log({ err }) })
+  async function fetchCardsList() {
+    try {
+      await fetchCards(params?.syncFromApi)
+      setCanNavigate(true)
+    }
+    catch (err) {
+      FlashMessage.show({
+        message: 'Ocorreu um problema ao carregar os cartões. Tente novamente mais tarde',
+        type: 'danger'
+      })
+
+      navigateToHome()
+    }
   }
 
-  function navigateToHome() {
+  function navigateToCardsList() {
     navigation.reset({
       index: 0,
       routes: [
@@ -46,11 +56,18 @@ export default function LoadingWalletScreen() {
     })
   }
 
-  function execAnimation() {
+  function navigateToHome() {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: SCREENS_NAME.home }]
+    })
+  }
+
+  function execAnimation(callBack: () => void) {
     walletImageScale.value = withTiming(
       2,
       { duration: 1200, easing: Easing.ease },
-      () => runOnJS(navigateToHome)()
+      () => runOnJS(callBack)()
     );
   }
 
