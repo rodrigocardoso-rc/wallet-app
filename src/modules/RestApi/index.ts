@@ -1,8 +1,9 @@
 import axios from "axios";
+import Constants from 'expo-constants';
 
 type TMethod = "GET" | "POST" | "PUT" | "DELETE"
 
-const BASE_URL = "http://192.168.18.70:3000";
+const BASE_URL = Constants.expoConfig?.extra?.apiUrl;
 
 const API = axios.create({
   baseURL: BASE_URL,
