@@ -3,7 +3,7 @@ import { View } from "react-native";
 import Text from "../../components/Text";
 import { useContext, useState } from "react";
 import { CardsContext } from "../../context/cardsContext";
-import CardData, { OVERLAP } from "../../components/CardData";
+import CardData from "../../components/CardData";
 import { ICard } from "../../model/card";
 import Button from "../../components/Button";
 import { getTypeCard } from "../../modules/cardUtils";
@@ -69,7 +69,7 @@ export default function CardsListScreen() {
       <View style={styles.bodyContainer}>
         {cardListTyped.map(renderItem)}
 
-        <View style={[styles.actionsContainer, { marginTop: cardListTyped.length * OVERLAP }]}>
+        <View style={[styles.actionsContainer]}>
           {selectedCardId ? (
             <Button
               onPress={onPressPayWithCard}

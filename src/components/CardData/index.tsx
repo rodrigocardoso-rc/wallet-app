@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, Dimensions, TouchableWithoutFeedback } from "react-native";
+import { TouchableOpacity, View, Dimensions, Pressable, TouchableWithoutFeedback } from "react-native";
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from "react-native-reanimated";
 import { ICard } from "../../model/card";
 import Text from '../Text';
@@ -8,16 +8,16 @@ import { cardNumbersHideDataApplyMask, expirationDateApplyMask } from "../../mod
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface ICardDataProps {
-  card: ICard
-  type: 'green' | 'black'
-  index?: number
-  selectedCardId?: string | null
-  onPress?: () => void
+  card: ICard;
+  type: 'green' | 'black';
+  index?: number;
+  selectedCardId?: string | null;
+  onPress?: () => void;
 }
 
-const { height: screenHeight } = Dimensions.get("screen")
-export const CARD_HEIGHT = 200
-export const OVERLAP = 40
+const { height: screenHeight } = Dimensions.get("screen");
+export const CARD_HEIGHT = 200;
+export const OVERLAP = 60;
 
 export default function CardData({
   card,
@@ -26,36 +26,36 @@ export default function CardData({
   selectedCardId,
   onPress,
 }: ICardDataProps) {
-  const { name, number, expirationDate, id } = card
-  const title = type === "green" ? "Green Card" : "Black Card"
+  const { name, number, expirationDate, id } = card;
+  const title = type === "green" ? "Green Card" : "Black Card";
 
   const insets = useSafeAreaInsets()
-  const positionY = useSharedValue(index * OVERLAP)
+  const positionY = useSharedValue(0)
   const cardRef = useRef<View>(null)
 
-  const [unfocused, setUnfocused] = useState(false)
+  const [unfocused, setUnfocused] = useState(false);
 
   useEffect(() => {
     if (!selectedCardId) {
-      resetAnimation()
+      resetAnimation();
     } else if (selectedCardId === id) {
-      animateToFocus()
+      animateToFocus();
     } else {
-      animateToDown()
+      animateToDown();
     }
-  }, [selectedCardId])
+  }, [selectedCardId]);
 
   function executeAnimation(toValue: number) {
-    return withTiming(toValue, { duration: 300, easing: Easing.elastic(1.5) })
+    return withTiming(toValue, { duration: 300, easing: Easing.elastic(1.5) });
   }
 
   function resetAnimation() {
     setUnfocused(false)
-    positionY.value = executeAnimation(OVERLAP * index)
+    positionY.value = executeAnimation(0)
   }
 
   function animateToFocus() {
-    positionY.value = executeAnimation(0)
+    positionY.value = executeAnimation(positionY.value - OVERLAP);
   }
 
   function animateToDown() {
@@ -81,6 +81,7 @@ export default function CardData({
           styles.container,
           styles[type],
           animatedStyle,
+          index > 0 && { marginTop: -(CARD_HEIGHT - OVERLAP) },
           unfocused && styles.unfocused
         ]}
       >
@@ -109,4 +110,3 @@ export default function CardData({
     </TouchableWithoutFeedback>
   );
 }
-

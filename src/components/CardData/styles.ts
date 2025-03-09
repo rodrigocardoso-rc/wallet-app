@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native'
 import { COLORS } from '../../styles'
-import { CARD_HEIGHT, OVERLAP } from '.'
+import { CARD_HEIGHT } from '.'
 
 export default StyleSheet.create({
   cardWrapper: {
     width: '100%',
-    height: CARD_HEIGHT
+    height: CARD_HEIGHT,
   },
   green: {
     backgroundColor: COLORS.base.greenLight,
@@ -21,7 +21,6 @@ export default StyleSheet.create({
     borderRadius: 16,
     paddingHorizontal: 10,
     paddingVertical: 38,
-    marginTop: -(CARD_HEIGHT - OVERLAP),
   },
   containerText: {
     gap: 4,

@@ -27,6 +27,7 @@ export default StyleSheet.create({
   actionsContainer: {
     width: '100%',
     alignItems: 'center',
+    marginTop: 20
   },
   bodyText: {
     color: COLORS.base.white
