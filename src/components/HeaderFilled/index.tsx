@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ArrowLeft, Plus } from "../../assets/icons";
 import Text from "../Text";
-import { SCREENS_NAME } from "../../screens";
+import { SCREENS_NAME } from "../../screens/ScreensName";
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 
 interface IHeaderFilledProps {

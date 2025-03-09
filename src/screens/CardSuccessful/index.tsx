@@ -4,15 +4,13 @@ import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import { ICard } from "../../model"
 import { BackgroundScreen, TitleAnimated, CardData, Text, Button } from "../../components"
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
-import { SCREENS_NAME } from ".."
+import { SCREENS_NAME } from "../../screens/ScreensName"
 
 import styles from "./styles"
 
 export interface ICardSuccessfulScreenParams {
   card: ICard
 }
-
-export const NAME_CARD_SUCCESSFUL_SCREEN = 'CardSuccessfulScreen'
 
 type TRouteParams = RouteProp<RootStackParamList, SCREENS_NAME.cardSuccessful>;
 

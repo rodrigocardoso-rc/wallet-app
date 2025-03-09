@@ -10,8 +10,6 @@ interface ICardListTyped extends ICard {
   type: 'green' | 'black'
 }
 
-export const NAME_CARDS_LIST_SCREEN = 'CardsListScreen'
-
 export default function CardsListScreen() {
   const { cardsList } = useContext(CardsContext)
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);

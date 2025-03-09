@@ -17,7 +17,7 @@ import {
 import { Validators, Mask } from '../../utils'
 import { Uuid } from "../../modules";
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
-import { SCREENS_NAME } from "..";
+import { SCREENS_NAME } from "../ScreensName";
 
 import styles from "./styles";
 import { CardsContext } from "../../contexts/CardsContext";
@@ -29,8 +29,6 @@ interface IFormData {
   expirationData: string;
   securityCode: string;
 }
-
-export const NAME_NEW_CARD_SCREEN = 'NewCardScreen'
 
 const validationSchema = yup.object().shape({
   cardNumber: yup

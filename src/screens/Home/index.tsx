@@ -2,13 +2,11 @@ import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 
-import { SCREENS_NAME } from "..";
+import { SCREENS_NAME } from "../ScreensName";
 import { Button, TitleAnimated, BackgroundScreen } from "../../components";
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 
 import styles from "./styles";
-
-export const NAME_HOME_SCREEN = 'HomeScreen'
 
 export default function HomeScreen() {
   const navigation = useNavigation<RootStackNavigationProp>();

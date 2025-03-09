@@ -8,14 +8,12 @@ import { BackgroundScreen } from "../../components";
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
 
 import styles from "./styles";
-import { SCREENS_NAME } from ".."
+import { SCREENS_NAME } from "../ScreensName"
 import { FlashMessage } from "../../modules";
 
 export interface ILoadingWalletScreenParams {
   syncFromApi?: boolean
 }
-
-export const NAME_LOADING_WALLET_SCREEN = 'LoadingWalletScreen'
 
 type TRouteParams = RouteProp<RootStackParamList, SCREENS_NAME.loadingWallet>;
 

@@ -1,11 +1,9 @@
 import { StyleSheet } from 'react-native'
 import { COLORS } from '../../styles'
-import { CARD_HEIGHT } from '.'
 
 export default StyleSheet.create({
   cardWrapper: {
     width: '100%',
-    height: CARD_HEIGHT,
   },
   green: {
     backgroundColor: COLORS.base.greenLight,
