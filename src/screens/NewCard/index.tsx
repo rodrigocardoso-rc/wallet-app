@@ -15,7 +15,7 @@ import {
   TitleAnimated
 } from "../../components";
 import { Validators, Mask } from '../../utils'
-import { generateUUid } from "../../modules/Uuid";
+import { Uuid } from "../../modules";
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 import { SCREENS_NAME } from "../";
 
@@ -82,7 +82,7 @@ export default function NewCardScreen() {
       setIsLoading(true);
 
       const cardDto: ICard = {
-        id: generateUUid(),
+        id: Uuid.generateUUid(),
         number: form.cardNumber,
         name: form.ownerName,
         expirationDate: form.expirationData,

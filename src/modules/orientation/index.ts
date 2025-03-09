@@ -8,4 +8,4 @@ function unLockOrientation() {
   return ScreenOrientation.unlockAsync();
 }
 
-export default { lockOrientation, unLockOrientation }
+export { lockOrientation, unLockOrientation }

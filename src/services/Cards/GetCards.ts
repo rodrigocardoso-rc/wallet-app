@@ -1,7 +1,7 @@
 import { CARD_SERVICE } from ".";
 import { ICard } from "../../model";
-import { httpGet } from "../../modules/RestApi";
+import { RestApi } from "../../modules";
 
 export function getCards() {
-  return httpGet<ICard[]>(CARD_SERVICE)
+  return RestApi.httpGet<ICard[]>(CARD_SERVICE)
 }

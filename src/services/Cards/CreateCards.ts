@@ -1,7 +1,7 @@
 import { CARD_SERVICE } from ".";
 import { ICard } from "../../model";
-import { httpPost } from "../../modules/RestApi";
+import { RestApi } from "../../modules";
 
 export function createCards(card: ICard) {
-  return httpPost<ICard>(CARD_SERVICE, card)
+  return RestApi.httpPost<ICard>(CARD_SERVICE, card)
 }

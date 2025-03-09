@@ -27,8 +27,7 @@ function hide() {
 }
 
 export {
-  show,
-  hide
-};
-
-export default FlashMessage
+  FlashMessage as FlashMessageComponent,
+  hide,
+  show
+}

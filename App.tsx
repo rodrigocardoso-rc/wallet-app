@@ -13,7 +13,7 @@ export default function App() {
   return (
     <CardsProvider>
       <AppNavigator />
-      <FlashMessage.default />
+      <FlashMessage.FlashMessageComponent />
     </CardsProvider>
   );
 }

@@ -1,7 +1,11 @@
 import * as FlashMessage from "./FlashMessage";
-import Orientation from "./Orientation";
+import * as Orientation from "./Orientation";
+import * as RestApi from './RestApi'
+import * as Uuid from './Uuid'
 
 export {
   FlashMessage,
-  Orientation
+  Orientation,
+  RestApi,
+  Uuid
 }
