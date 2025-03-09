@@ -1,19 +1,25 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native"
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
 import { LargeWallet, SmallWallet } from "../../assets/images";
 import { CardsContext } from "../../context/cardsContext";
 import BackgroundScreen from "../../components/BackgroundScreen";
-import { RootStackNavigationProp } from "../../navigator/appNavigation"
+import { RootStackNavigationProp, RootStackParamList } from "../../navigator/appNavigation"
 
 import styles from "./styles";
 import { SCREENS_NAME } from "../screensName"
 
-export default function LoadingWalletScreen() {
-  const { getCards } = useContext(CardsContext)
+export interface ILoadingWalletScreenParams {
+  syncFromApi?: boolean
+}
 
+type TRouteParams = RouteProp<RootStackParamList, SCREENS_NAME.loadingWallet>;
+
+export default function LoadingWalletScreen() {
+  const { fetchCards } = useContext(CardsContext)
   const navigation = useNavigation<RootStackNavigationProp>()
+  const { params } = useRoute<TRouteParams>()
   const walletImageScale = useSharedValue(1)
 
   const [canNavigate, setCanNavigate] = useState(false)
@@ -25,7 +31,7 @@ export default function LoadingWalletScreen() {
   }, [canNavigate]);
 
   function fetchCardsList() {
-    getCards()
+    fetchCards(params?.syncFromApi)
       .then(() => { setCanNavigate(true) })
       .catch((err) => { console.log({ err }) })
   }

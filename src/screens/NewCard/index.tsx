@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
@@ -15,11 +15,11 @@ import {
 } from "../../modules/validators";
 import { cardNumberApplyMask, expirationDateApplyMask } from "../../modules/mask";
 import { generateUUid } from "../../modules/uuid";
-import { createCards } from "../../modules/network/endPoints";
 import { RootStackNavigationProp } from "../../navigator/appNavigation";
 import { SCREENS_NAME } from "../screensName";
 
 import styles from "./styles";
+import { CardsContext } from "../../context/cardsContext";
 
 const INITIAL_FORM = {
   cardNumber: '',
@@ -29,6 +29,7 @@ const INITIAL_FORM = {
 }
 
 export default function NewCardScreen() {
+  const { addCard } = useContext(CardsContext)
   const navigation = useNavigation<RootStackNavigationProp>();
 
   const [form, setForm] = useState(INITIAL_FORM)
@@ -73,7 +74,7 @@ export default function NewCardScreen() {
       cvv: form.securityCode,
     }
 
-    createCards(cardDto)
+    addCard(cardDto)
       .then((res) => { goToCardSuccessful(res) })
       .catch((err) => { console.log({ err }) })
       .finally(() => { setIsLoading(false) })

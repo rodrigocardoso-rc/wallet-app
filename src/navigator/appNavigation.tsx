@@ -5,17 +5,17 @@ import HeaderOutlined from "../components/HeaderOutlined";
 import NewCardScreen from "../screens/NewCard";
 import { SCREENS_NAME } from "../screens/screensName";
 import CardSuccessfulScreen, { ICardSuccessfulScreenParams } from "../screens/CardSuccessful";
-import LoadingWalletScreen from "../screens/LoadingWallet";
+import LoadingWalletScreen, { ILoadingWalletScreenParams } from "../screens/LoadingWallet";
 import CardsListScreen from "../screens/CardsList";
 import HeaderFilled from "../components/HeaderFilled";
 
 const Stack = createNativeStackNavigator();
 
-type RootStackParamList = {
+export type RootStackParamList = {
   [SCREENS_NAME.home]: undefined;
   [SCREENS_NAME.newCard]: undefined;
   [SCREENS_NAME.cardSuccessful]: ICardSuccessfulScreenParams,
-  [SCREENS_NAME.loadingWallet]: undefined,
+  [SCREENS_NAME.loadingWallet]?: ILoadingWalletScreenParams,
   [SCREENS_NAME.cardsList]: undefined
 };
 

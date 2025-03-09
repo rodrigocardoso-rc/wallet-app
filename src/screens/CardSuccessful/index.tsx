@@ -6,28 +6,27 @@ import TitleAnimated from "../../components/TitleAnimated"
 import CardData from "../../components/CardData"
 import Text from "../../components/Text"
 import Button from "../../components/Button"
-import { useNavigation } from "@react-navigation/native"
-import { RootStackNavigationProp } from "../../navigator/appNavigation"
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
+import { RootStackNavigationProp, RootStackParamList } from "../../navigator/appNavigation"
 import { SCREENS_NAME } from "../screensName"
 
 export interface ICardSuccessfulScreenParams {
   card: ICard
 }
 
+type TRouteParams = RouteProp<RootStackParamList, SCREENS_NAME.cardSuccessful>;
 
 export default function CardSuccessfulScreen() {
-  const navigation = useNavigation<RootStackNavigationProp>();
-
-  const card: ICard = {
-    id: '',
-    number: "1234123412341234",
-    cvv: "123",
-    name: "Rodrigo Teste",
-    expirationDate: "0430"
-  }
+  const navigation = useNavigation<RootStackNavigationProp>()
+  const { params: { card } } = useRoute<TRouteParams>()
 
   function onPressNext() {
-    navigation.navigate(SCREENS_NAME.home)
+    navigation.reset({
+      index: 0,
+      routes: [
+        { name: SCREENS_NAME.home },
+        { name: SCREENS_NAME.loadingWallet, params: { syncFromApi: true } }]
+    })
   }
 
   return (

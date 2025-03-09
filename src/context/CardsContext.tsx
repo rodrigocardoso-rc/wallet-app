@@ -7,14 +7,14 @@ import {
 
 interface ICardsContext {
   cardsList: ICard[];
-  getCards: () => Promise<ICard[]>;
-  createCards: (card: ICard) => Promise<ICard>;
+  fetchCards: (syncFromApi?: boolean) => Promise<void>;
+  addCard: (card: ICard) => Promise<ICard>;
 }
 
 const INITIAL_CONTEXT: ICardsContext = {
   cardsList: [],
-  getCards: () => Promise.resolve([]),
-  createCards: () => Promise.resolve({} as ICard)
+  fetchCards: () => Promise.resolve(),
+  addCard: () => Promise.resolve({} as ICard)
 }
 
 export const CardsContext = createContext<ICardsContext>(INITIAL_CONTEXT);
@@ -22,18 +22,15 @@ export const CardsContext = createContext<ICardsContext>(INITIAL_CONTEXT);
 export function CardsProvider({ children }: { children: ReactElement }) {
   const [cardsList, setCardsList] = useState<ICard[]>([]);
 
-  async function getCards() {
-    if (!cardsList.length) {
+  async function fetchCards(syncFromApi?: boolean) {
+    if (!cardsList.length || syncFromApi) {
       const newList = await getCardsFromApi()
 
       setCardsList(newList)
-      return newList
     }
-
-    return cardsList
   }
 
-  async function createCards(card: ICard) {
+  async function addCard(card: ICard) {
     const newCard = await createCardsFromApi(card)
     setCardsList([...cardsList, newCard])
 
@@ -41,7 +38,7 @@ export function CardsProvider({ children }: { children: ReactElement }) {
   }
 
   return (
-    <CardsContext.Provider value={{ cardsList, getCards, createCards }}>
+    <CardsContext.Provider value={{ cardsList, fetchCards, addCard }}>
       {children}
     </CardsContext.Provider>
   )
