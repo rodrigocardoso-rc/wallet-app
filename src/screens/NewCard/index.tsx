@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 
-import { Camera } from "../../assets/icons1";
+import { Camera } from "../../assets/icons";
 import { ICard } from "../../model";
 import {
   Input,
