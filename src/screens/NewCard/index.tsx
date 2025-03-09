@@ -14,7 +14,7 @@ import {
   validateOwnerName, validateSecurityCode
 } from "../../modules/validators";
 import { cardNumberApplyMask, expirationDateApplyMask } from "../../modules/mask";
-import { generateUUid } from "../../modules/uuid/generateUuid";
+import { generateUUid } from "../../modules/uuid";
 import { createCards } from "../../modules/network/endPoints";
 import { RootStackNavigationProp } from "../../navigator/appNavigation";
 import { SCREENS_NAME } from "../screensName";

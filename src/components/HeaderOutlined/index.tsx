@@ -6,11 +6,11 @@ import Text from "../Text";
 import styles from "./styles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-interface IOutlinedHeaderProps {
+interface IHeaderOutlinedProps {
   title: string;
 }
 
-export default function OutlinedHeader({ title }: IOutlinedHeaderProps) {
+export default function HeaderOutlined({ title }: IHeaderOutlinedProps) {
   const insets = useSafeAreaInsets()
   const navigation = useNavigation()
 
@@ -24,7 +24,12 @@ export default function OutlinedHeader({ title }: IOutlinedHeaderProps) {
         <ArrowLeft height={styles.icon.height} width={styles.icon.width} />
       </TouchableOpacity>
 
-      <Text variant="h3" color={styles.title.color} style={styles.title}>{title}</Text>
+      <Text
+        variant="h3"
+        color={styles.title.color}
+        style={styles.title}>
+        {title}
+      </Text>
     </View>
   );
 }

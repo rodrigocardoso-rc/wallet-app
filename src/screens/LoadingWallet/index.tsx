@@ -33,7 +33,10 @@ export default function LoadingWalletScreen() {
   function navigateToHome() {
     navigation.reset({
       index: 0,
-      routes: [{ name: SCREENS_NAME.home }]
+      routes: [
+        { name: SCREENS_NAME.home },
+        { name: SCREENS_NAME.cardsList },
+      ]
     })
   }
 
