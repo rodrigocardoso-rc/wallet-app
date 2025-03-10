@@ -3,7 +3,7 @@ import {
   expirationDate,
   ownerName,
   securityCode
-} from './CardValidator'
+} from './CardValidator/CardValidator'
 
 export default {
   cardNumber,

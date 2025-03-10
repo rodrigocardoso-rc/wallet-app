@@ -4,7 +4,7 @@ import { Text, CardData, Button } from "../../components";
 import { useContext, useState } from "react";
 import { CardsContext } from "../../contexts/CardsContext";
 import { useCardListTyped } from "../../hooks";
-import { ICardListTyped } from "../../@types";
+import { ICardTyped } from "../../@types";
 
 export default function CardsListScreen() {
   const { cardsList } = useContext(CardsContext)
@@ -26,7 +26,7 @@ export default function CardsListScreen() {
     // TODO: Implements payment feature
   }
 
-  function renderItem(card: ICardListTyped, idx: number,) {
+  function renderItem(card: ICardTyped, idx: number,) {
     const { id } = card
 
     return (

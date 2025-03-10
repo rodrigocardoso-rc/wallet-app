@@ -1,4 +1,4 @@
-import * as Cards from "./Cards";
+import * as Cards from "./Cards/Cards";
 
 export {
   Cards

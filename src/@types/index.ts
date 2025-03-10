@@ -1,3 +1,3 @@
-import { ICardListTyped } from "./CardsTyped"
+import { ICardTyped, IFormCardData } from "./CardsTyped"
 
-export { ICardListTyped }
+export { ICardTyped, IFormCardData }

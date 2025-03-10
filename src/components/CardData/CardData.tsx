@@ -5,12 +5,12 @@ import Animated, { useAnimatedStyle } from "react-native-reanimated"
 import Text from "../Text/Text";
 import { Mask } from '../../utils'
 import { CARD_HEIGHT, OVERLAP, useCardAnimation } from "../../hooks/useCardAnimation"
-import { ICardListTyped } from "../../@types"
+import { ICardTyped } from "../../@types"
 
 import styles from "./styles"
 
 interface ICardDataProps {
-  card: ICardListTyped;
+  card: ICardTyped;
   index?: number;
   selectedCardId?: string | null;
   onPress?: () => void

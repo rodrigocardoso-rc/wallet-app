@@ -1,23 +1,23 @@
 import { createContext, ReactElement, useState } from "react"
-import { ICard } from "../model"
 import { Cards } from "../services"
+import { ICardTyped, IFormCardData } from "../@types";
 
 interface ICardsContext {
-  cardsList: ICard[];
+  cardsList: ICardTyped[];
   fetchCards: (syncFromApi?: boolean) => Promise<void>;
-  addCard: (card: ICard) => Promise<ICard>;
+  addCard: (card: IFormCardData) => Promise<ICardTyped>;
 }
 
 const INITIAL_CONTEXT: ICardsContext = {
   cardsList: [],
   fetchCards: () => Promise.resolve(),
-  addCard: () => Promise.resolve({} as ICard)
+  addCard: () => Promise.resolve({} as ICardTyped)
 }
 
 export const CardsContext = createContext<ICardsContext>(INITIAL_CONTEXT)
 
 export function CardsProvider({ children }: { children: ReactElement | ReactElement[] }) {
-  const [cardsList, setCardsList] = useState<ICard[]>([])
+  const [cardsList, setCardsList] = useState<ICardTyped[]>([])
 
   async function fetchCards(syncFromApi?: boolean) {
     if (!cardsList.length || syncFromApi) {
@@ -27,7 +27,7 @@ export function CardsProvider({ children }: { children: ReactElement | ReactElem
     }
   }
 
-  async function addCard(card: ICard) {
+  async function addCard(card: IFormCardData) {
     const newCard = await Cards.createCards(card)
     setCardsList([...cardsList, newCard])
 

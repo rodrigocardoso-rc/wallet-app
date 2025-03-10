@@ -2,7 +2,7 @@ import {
   applyMaskCardNumber,
   applyMaskHideCardNumber,
   applyMaskExpirationDate
-} from './CardMasks'
+} from './CardMasks/CardMasks'
 
 export default {
   applyMaskCardNumber,

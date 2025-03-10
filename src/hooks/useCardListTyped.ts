@@ -1,19 +1,9 @@
 import { useState } from "react"
 
-import { ICard } from "../model"
-import { ICardListTyped } from "../@types"
+import { ICardTyped } from "../@types"
 
-export function useCardListTyped(cardsList: ICard[]) {
-  const [cardListTyped, setCardListTyped] = useState<ICardListTyped[]>(
-    cardsList.map((card, idx) => ({
-      id: card.id,
-      ownerName: card.name,
-      cardNumber: card.number,
-      securityCode: card.cvv,
-      expirationDate: card.expirationDate,
-      type: (idx % 2) ? 'black' : 'green'
-    }))
-  );
+export function useCardListTyped(cardsList: ICardTyped[]) {
+  const [cardListTyped, setCardListTyped] = useState<ICardTyped[]>(cardsList);
 
   function swapCards(idx: number): void {
     const lastIndex = cardListTyped.length - 1

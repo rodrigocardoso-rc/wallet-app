@@ -6,10 +6,10 @@ import { RootStackNavigationProp, RootStackParamList } from "../../navigators/Ap
 import { SCREENS_NAME } from "../../screens/ScreensName"
 
 import styles from "./styles"
-import { ICardListTyped } from "../../@types"
+import { ICardTyped } from "../../@types"
 
 export interface ICardSuccessfulScreenParams {
-  card: ICardListTyped
+  card: ICardTyped
 }
 
 type TRouteParams = RouteProp<RootStackParamList, SCREENS_NAME.cardSuccessful>;
