@@ -99,11 +99,19 @@ export default function NewCardScreen() {
   }
 
   function goToCardSuccessful(card: ICard) {
+    const cardTyped: ICardListTyped = {
+      ...card,
+      type: 'black',
+      cardNumber: card.number,
+      securityCode: card.cvv,
+      ownerName: card.name
+    };
+
     navigation.reset({
       index: 0,
       routes: [
         { name: SCREENS_NAME.home },
-        { name: SCREENS_NAME.cardSuccessful, params: { card } },
+        { name: SCREENS_NAME.cardSuccessful, params: { card: cardTyped } },
       ],
     });
   }

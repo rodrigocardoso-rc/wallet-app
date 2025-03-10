@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../styles";
+import { COLORS, SPACING } from "../../styles";
 
 export default StyleSheet.create({
   container: {
@@ -10,9 +10,9 @@ export default StyleSheet.create({
   iconContainer: {
     position: "absolute",
     bottom: 0,
-    left: 16,
-    paddingVertical: 12,
-    paddingRight: 16,
+    left: SPACING.margin.medium,
+    paddingVertical: SPACING.padding.medium,
+    paddingRight: SPACING.padding.large,
   },
   icon: {
     height: 22,

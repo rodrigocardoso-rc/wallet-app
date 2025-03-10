@@ -1,16 +1,17 @@
 import { StyleSheet } from 'react-native'
+import { SPACING } from '../../styles'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 28,
-    gap: 10,
+    paddingHorizontal: SPACING.padding.xLarge,
+    gap: SPACING.gap.large,
   },
   buttonContainer: {
     width: '100%',
-    gap: 20,
-    paddingVertical: 20,
+    gap: SPACING.gap.xLarge,
+    paddingVertical: SPACING.padding.large,
   }
 })

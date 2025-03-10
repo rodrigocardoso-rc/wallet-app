@@ -10,8 +10,8 @@ export function useBackgroundAnimation() {
   useEffect(() => {
     itemDimension.value = withRepeat(
       withSequence(
-        withSpring(width, { duration: 1000 }),
-        withSpring(width + width / 5, { duration: 1000 })
+        withSpring(width, { duration: 400 }),
+        withSpring(width + width / 5, { duration: 400 })
       ),
       -1,
       true

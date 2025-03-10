@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { SPACING } from '../../styles'
 
 export default StyleSheet.create({
   keyBoardContainer: {
@@ -6,11 +7,11 @@ export default StyleSheet.create({
   },
   container: {
     flexGrow: 1,
-    gap: 20,
+    gap: SPACING.gap.xLarge,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 10,
-    paddingHorizontal: 28,
+    paddingVertical: SPACING.padding.large,
+    paddingHorizontal: SPACING.padding.large,
   },
   title: {
     alignSelf: 'center',

@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '../../styles'
+import { COLORS, SPACING } from '../../styles'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 36,
-    gap: 10,
+    paddingHorizontal: SPACING.padding.large,
+    gap: SPACING.gap.xLarge,
   },
   textContainer: {
     alignItems: 'center',
-    gap: 10,
+    gap: SPACING.gap.large,
   },
   text: {
     color: COLORS.base.white

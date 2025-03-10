@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '../../styles'
+import { COLORS, SPACING } from '../../styles'
 
 export default StyleSheet.create({
   cardWrapper: {
-    width: '100%',
+    width: '100%'
   },
   green: {
     backgroundColor: COLORS.base.greenLight,
@@ -15,13 +15,13 @@ export default StyleSheet.create({
   },
   container: {
     width: '100%',
-    gap: 38,
-    borderRadius: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 38,
+    gap: 40,
+    borderRadius: SPACING.borderRadius.large,
+    paddingHorizontal: SPACING.padding.large,
+    paddingVertical: 40,
   },
   containerText: {
-    gap: 4,
+    gap: SPACING.gap.small,
   },
   unfocused: {
     opacity: 0.4

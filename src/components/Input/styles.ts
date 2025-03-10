@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '../../styles'
+import { COLORS, SPACING } from '../../styles'
 
 export default StyleSheet.create({
   large: {
@@ -9,11 +9,11 @@ export default StyleSheet.create({
     width: '45%'
   },
   container: {
-    gap: 4,
+    gap: SPACING.gap.small,
     alignItems: 'flex-start',
   },
   containerError: {
-    borderWidth: 2,
+    borderWidth: SPACING.borderWidth.medium,
     borderColor: COLORS.alert.yellow
   },
   label: {
@@ -22,7 +22,7 @@ export default StyleSheet.create({
   iconContainer: {
     height: 32,
     width: 32,
-    borderRadius: 20,
+    borderRadius: SPACING.borderRadius.xLarge,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.base.blueLight
@@ -31,14 +31,14 @@ export default StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 10,
-    gap: 10,
-    borderRadius: 8,
+    paddingHorizontal: SPACING.padding.medium,
+    gap: SPACING.gap.medium,
+    borderRadius: SPACING.borderRadius.small,
     backgroundColor: COLORS.base.greyLight,
   },
   textInput: {
     width: '100%',
-    paddingVertical: 16,
+    paddingVertical: SPACING.padding.medium,
     color: COLORS.text.black
   },
   placeholder: {

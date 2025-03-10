@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '../../styles'
+import { COLORS, SPACING } from '../../styles'
 
 export default StyleSheet.create({
   animatedViewContainer: {
@@ -9,9 +9,9 @@ export default StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    borderRadius: 12,
+    paddingVertical: SPACING.padding.large,
+    paddingHorizontal: SPACING.padding.large,
+    borderRadius: SPACING.borderRadius.medium,
   },
   default: {
     backgroundColor: COLORS.base.blueLight,

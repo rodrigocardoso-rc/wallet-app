@@ -24,7 +24,6 @@ export default function LoadingWalletScreen() {
   const { params } = useRoute<TRouteParams>()
 
   const [canNavigate, setCanNavigate] = useState(false)
-
   const walletImageScale = useImageAnimation(canNavigate, navigateToCardsList)
 
   useEffect(() => { fetchCardsList() }, [])

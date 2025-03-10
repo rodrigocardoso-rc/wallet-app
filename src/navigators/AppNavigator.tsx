@@ -11,8 +11,8 @@ import {
 import { SCREENS_NAME } from "../screens/ScreensName"
 import { HeaderOutlined, HeaderFilled } from "../components"
 
-import { ICardSuccessfulScreenParams } from "../screens/CardSuccessful"
-import { ILoadingWalletScreenParams } from "../screens/LoadingWallet"
+import { ICardSuccessfulScreenParams } from "../screens/CardSuccessful/CardSuccessfulScreen"
+import { ILoadingWalletScreenParams } from "../screens/LoadingWallet/LoadingWalletScreen"
 
 const Stack = createNativeStackNavigator()
 

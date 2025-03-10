@@ -8,7 +8,7 @@ export function useImageAnimation(canAnimate: boolean, onAnimationEnd: () => voi
     if (canAnimate) {
       imageScale.value = withTiming(
         2,
-        { duration: 1200, easing: Easing.ease },
+        { duration: 800, easing: Easing.ease },
         () => runOnJS(onAnimationEnd)()
       );
     }

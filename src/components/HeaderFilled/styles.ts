@@ -1,18 +1,18 @@
 import { StyleSheet } from 'react-native'
-import { COLORS, SHADOW } from '../../styles'
+import { COLORS, SHADOW, SPACING } from '../../styles'
 
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 12,
+    paddingVertical: SPACING.padding.medium,
     backgroundColor: COLORS.base.greyLight,
     ...SHADOW
   },
   iconContainer: {
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: SPACING.padding.medium,
+    paddingHorizontal: SPACING.padding.large,
   },
   icon: {
     height: 22,
