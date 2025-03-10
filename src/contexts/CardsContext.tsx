@@ -1,17 +1,20 @@
 import { createContext, ReactElement, useState } from "react"
-import { Cards } from "../services"
+
+import * as Cards from "../services/CardsServices/CardsServices"
 import { ICardTyped, IFormCardData } from "../@types";
 
 interface ICardsContext {
   cardsList: ICardTyped[];
   fetchCards: (syncFromApi?: boolean) => Promise<void>;
   addCard: (card: IFormCardData) => Promise<ICardTyped>;
+  swapCards: (idx: number) => void;
 }
 
 const INITIAL_CONTEXT: ICardsContext = {
   cardsList: [],
   fetchCards: () => Promise.resolve(),
-  addCard: () => Promise.resolve({} as ICardTyped)
+  addCard: () => Promise.resolve({} as ICardTyped),
+  swapCards: () => { },
 }
 
 export const CardsContext = createContext<ICardsContext>(INITIAL_CONTEXT)
@@ -34,8 +37,17 @@ export function CardsProvider({ children }: { children: ReactElement | ReactElem
     return newCard
   }
 
+  function swapCards(idx: number): void {
+    const lastIndex = cardsList.length - 1
+    const updatedCards = [...cardsList];
+
+    [updatedCards[idx], updatedCards[lastIndex]] = [updatedCards[lastIndex], updatedCards[idx]]
+
+    setCardsList(updatedCards)
+  }
+
   return (
-    <CardsContext.Provider value={{ cardsList, fetchCards, addCard }}>
+    <CardsContext.Provider value={{ cardsList, fetchCards, addCard, swapCards }}>
       {children}
     </CardsContext.Provider>
   )

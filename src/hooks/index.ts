@@ -1,7 +1,7 @@
 import { useBackgroundAnimation } from "./useBackgroundAnimation";
 import { useTitleAnimation } from "./useTitleAnimation";
 import { useCardAnimation } from "./useCardAnimation";
-import { useCardListTyped } from "./useCardListTyped";
+import { useCardList } from "./useCardList";
 import { useImageAnimation } from "./useImageAnimation";
 import { useButtonAnimation } from "./useButtonAnimation";
 
@@ -9,7 +9,7 @@ export {
   useBackgroundAnimation,
   useTitleAnimation,
   useCardAnimation,
-  useCardListTyped,
+  useCardList,
   useImageAnimation,
   useButtonAnimation
 }

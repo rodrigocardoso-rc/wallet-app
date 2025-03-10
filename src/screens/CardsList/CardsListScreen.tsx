@@ -1,16 +1,16 @@
-import styles from "./styles";
+import { useState } from "react";
 import { View } from "react-native";
-import { Text, CardData, Button } from "../../components";
-import { useContext, useState } from "react";
-import { CardsContext } from "../../contexts/CardsContext";
-import { useCardListTyped } from "../../hooks";
+
 import { ICardTyped } from "../../@types";
+import { Text, CardData, Button } from "../../components";
+import { useCardList } from "../../hooks";
+
+import styles from "./styles";
 
 export default function CardsListScreen() {
-  const { cardsList } = useContext(CardsContext)
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
-  const { cardListTyped, swapCards } = useCardListTyped(cardsList);
+  const { cardsList, swapCards } = useCardList();
 
   function onPressCard(cardId: string, idx: number) {
     if (selectedCardId) {
@@ -48,7 +48,7 @@ export default function CardsListScreen() {
       </View>
 
       <View style={styles.bodyContainer}>
-        {cardListTyped.map(renderItem)}
+        {cardsList.map(renderItem)}
 
         <View style={[styles.actionsContainer]}>
           {selectedCardId ? (

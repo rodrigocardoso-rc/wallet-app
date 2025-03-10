@@ -1,16 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
-import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import Animated, { useAnimatedStyle } from "react-native-reanimated";
 
 import { LargeWallet, SmallWallet } from "../../assets/Images";
-import { CardsContext } from "../../contexts/CardsContext";
 import { Background } from "../../components";
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
 import { SCREENS_NAME } from "../ScreensName"
 import { FlashMessage } from "../../modules";
+import { useCardList, useImageAnimation } from "../../hooks";
 
 import styles from "./styles";
-import { useImageAnimation } from "../../hooks";
 
 export interface ILoadingWalletScreenParams {
   syncFromApi?: boolean
@@ -19,7 +18,7 @@ export interface ILoadingWalletScreenParams {
 type TRouteParams = RouteProp<RootStackParamList, SCREENS_NAME.loadingWallet>;
 
 export default function LoadingWalletScreen() {
-  const { fetchCards } = useContext(CardsContext)
+  const { fetchCards } = useCardList()
   const navigation = useNavigation<RootStackNavigationProp>()
   const { params } = useRoute<TRouteParams>()
 

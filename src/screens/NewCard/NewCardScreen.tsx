@@ -15,11 +15,11 @@ import * as Mask from '../../utils/Mask/CardMasks/CardMasks';
 import { Validators } from '../../utils'
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 import { SCREENS_NAME } from "../ScreensName";
-import { CardsContext } from "../../contexts/CardsContext";
 import { FlashMessage } from "../../modules";
 import { ICardTyped, IFormCardData } from "../../@types";
 
 import styles from "./styles";
+import { useCardList } from "../../hooks";
 
 const INITIAL_VALUES = {
   cardNumber: "",
@@ -48,7 +48,7 @@ const validationSchema = yup.object().shape({
 })
 
 export default function NewCardScreen() {
-  const { addCard } = useContext(CardsContext);
+  const { addCard } = useCardList();
   const navigation = useNavigation<RootStackNavigationProp>();
   const inputsRef = useRef<any>({});
 
