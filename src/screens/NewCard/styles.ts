@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { SPACING } from '../../styles'
+import SPACING from '../../styles/Spacing'
 
 export default StyleSheet.create({
   keyBoardContainer: {

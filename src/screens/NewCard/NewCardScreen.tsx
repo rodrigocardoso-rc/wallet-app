@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
@@ -6,20 +6,20 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup";
 
-import {
-  Input, Button,
-  Background, TitleAnimated
-} from "../../components";
+import { ICardTyped, IFormCardData } from "../../@types/CardsTyped";
 import { Camera } from "../../assets/Icons";
-import * as Mask from '../../utils/Mask/CardMasks/CardMasks';
-import { Validators } from '../../utils'
-import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 import { SCREENS_NAME } from "../ScreensName";
-import { FlashMessage } from "../../modules";
-import { ICardTyped, IFormCardData } from "../../@types";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
+import Background from "../../components/Background/Background";
+import TitleAnimated from "../../components/TitleAnimated/TitleAnimated";
+import * as CardMasks from '../../utils/Mask/CardMasks/CardMasks';
+import * as CardValidator from '../../utils/Validators/CardValidator/CardValidator'
+import { RootStackNavigationProp } from "../../navigators/AppNavigator";
+import * as FlashMessage from "../../modules/FlashMessage/FlashMessage";
 
 import styles from "./styles";
-import { useCardList } from "../../hooks";
+import useCardList from "../../hooks/useCardList";
 
 const INITIAL_VALUES = {
   cardNumber: "",
@@ -31,19 +31,19 @@ const INITIAL_VALUES = {
 const validationSchema = yup.object().shape({
   cardNumber: yup
     .string()
-    .test("valid-card", "Número de cartão inválido", (value) => Validators.cardNumber(value || ""))
+    .test("valid-card", "Número de cartão inválido", (value) => CardValidator.cardNumber(value || ""))
     .required("Campo obrigatório"),
   ownerName: yup
     .string()
-    .test("valid-name", "Nome inválido", (value) => Validators.ownerName(value || ""))
+    .test("valid-name", "Nome inválido", (value) => CardValidator.ownerName(value || ""))
     .required("Campo obrigatório"),
   expirationDate: yup
     .string()
-    .test("valid-date", "Data de vencimento inválida", (value) => Validators.expirationDate(value || ""))
+    .test("valid-date", "Data de vencimento inválida", (value) => CardValidator.expirationDate(value || ""))
     .required("Campo obrigatório"),
   securityCode: yup
     .string()
-    .test("valid-cvv", "Código inválido", (value) => Validators.securityCode(value || ""))
+    .test("valid-cvv", "Código inválido", (value) => CardValidator.securityCode(value || ""))
     .required("Campo obrigatório"),
 })
 
@@ -128,7 +128,7 @@ export default function NewCardScreen() {
                 ref={(ref) => (inputsRef.current.cardNumber = ref)}
                 autoFocus
                 label="Número do cartão"
-                value={Mask.applyMaskCardNumber(value)}
+                value={CardMasks.applyMaskCardNumber(value)}
                 maxLength={19}
                 keyboardType="numeric"
                 icon={{
@@ -168,7 +168,7 @@ export default function NewCardScreen() {
                 <Input
                   ref={(ref) => (inputsRef.current.expirationData = ref)}
                   label="Vencimento"
-                  value={Mask.applyMaskExpirationDate(value)}
+                  value={CardMasks.applyMaskExpirationDate(value)}
                   placeholder="00/00"
                   keyboardType="number-pad"
                   maxLength={5}

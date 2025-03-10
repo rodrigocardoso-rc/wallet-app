@@ -3,7 +3,9 @@ import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 
 import { SCREENS_NAME } from "../ScreensName";
-import { Button, TitleAnimated, Background } from "../../components";
+import Button from "../../components/Button/Button";
+import Background from "../../components/Background/Background";
+import TitleAnimated from "../../components/TitleAnimated/TitleAnimated";
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 
 import styles from "./styles";

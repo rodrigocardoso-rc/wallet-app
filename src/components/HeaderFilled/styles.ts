@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
-import { COLORS, SHADOW, SPACING } from '../../styles'
+import COLORS from '../../styles/Colors'
+import SHADOW from '../../styles/Shadow'
+import SPACING from '../../styles/Spacing'
 
 export default StyleSheet.create({
   container: {

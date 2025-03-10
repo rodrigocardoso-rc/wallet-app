@@ -1,15 +1,14 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack"
 
-import {
-  CardsListScreen,
-  HomeScreen,
-  LoadingWalletScreen,
-  NewCardScreen,
-  CardSuccessfulScreen,
-} from '../screens'
 import { SCREENS_NAME } from "../screens/ScreensName"
-import { HeaderOutlined, HeaderFilled } from "../components"
+import HomeScreen from "../screens/Home/HomeScreen"
+import NewCardScreen from "../screens/NewCard/NewCardScreen"
+import CardsListScreen from "../screens/CardsList/CardsListScreen"
+import LoadingWalletScreen from "../screens/LoadingWallet/LoadingWalletScreen"
+import CardSuccessfulScreen from "../screens/CardSuccessful/CardSuccessfulScreen"
+import HeaderOutlined from "../components/HeaderOutlined/HeaderOutlined"
+import HeaderFilled from "../components/HeaderFilled/HeaderFilled"
 
 import { ICardSuccessfulScreenParams } from "../screens/CardSuccessful/CardSuccessfulScreen"
 import { ILoadingWalletScreenParams } from "../screens/LoadingWallet/LoadingWalletScreen"

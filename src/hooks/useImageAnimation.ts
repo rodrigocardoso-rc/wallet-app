@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Easing, useSharedValue, withTiming, runOnJS } from 'react-native-reanimated';
 
-export function useImageAnimation(canAnimate: boolean, onAnimationEnd: () => void) {
+export default function useImageAnimation(canAnimate: boolean, onAnimationEnd: () => void) {
   const imageScale = useSharedValue(1);
 
   useEffect(() => {

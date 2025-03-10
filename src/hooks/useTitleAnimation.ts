@@ -5,7 +5,7 @@ import { Easing, useSharedValue, withTiming } from "react-native-reanimated"
 const START_POSITION = 130
 const END_POSITION = 150
 
-export function useTitleAnimation(fromBottom?: boolean) {
+export default function useTitleAnimation(fromBottom?: boolean) {
   const isFocused = useIsFocused()
   const textPosition = useSharedValue(fromBottom ? START_POSITION : -START_POSITION)
 

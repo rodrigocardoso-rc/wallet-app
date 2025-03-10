@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { COLORS, SPACING } from '../../styles'
+import COLORS from '../../styles/Colors'
+import SPACING from '../../styles/Spacing'
 
 export default StyleSheet.create({
   animatedViewContainer: {

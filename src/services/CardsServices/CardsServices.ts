@@ -1,5 +1,5 @@
-import { ICardTyped, IFormCardData } from "../../@types";
-import { ICard } from "../../model";
+import { ICardTyped, IFormCardData } from "../../@types/CardsTyped";
+import ICard from "../../model/Card";
 import * as RestApi from "../../modules/RestApi/RestApi";
 import * as Uuid from "../../modules/Uuid/Uuid";
 

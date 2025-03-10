@@ -3,9 +3,9 @@ import { View, TouchableWithoutFeedback } from "react-native"
 import Animated, { useAnimatedStyle } from "react-native-reanimated"
 
 import Text from "../Text/Text";
-import { Mask } from '../../utils'
-import { CARD_HEIGHT, OVERLAP, useCardAnimation } from "../../hooks/useCardAnimation"
-import { ICardTyped } from "../../@types"
+import * as CardMasks from '../../utils/Mask/CardMasks/CardMasks'
+import useCardAnimation, { CARD_HEIGHT, OVERLAP,  } from "../../hooks/useCardAnimation"
+import { ICardTyped } from "../../@types/CardsTyped"
 
 import styles from "./styles"
 
@@ -62,13 +62,13 @@ export default function CardData({
           <Text
             variant={"paragraph"}
             color={styles[type].color}>
-            {Mask.applyMaskHideCardNumber(cardNumber)}
+            {CardMasks.applyMaskHideCardNumber(cardNumber)}
           </Text>
 
           <Text
             variant={"paragraph"}
             color={styles[type].color}>
-            Validade: {Mask.applyMaskExpirationDate(expirationDate)}
+            Validade: {CardMasks.applyMaskExpirationDate(expirationDate)}
           </Text>
         </View>
       </Animated.View>

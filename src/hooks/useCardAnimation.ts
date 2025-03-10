@@ -8,7 +8,7 @@ export const OVERLAP = 60
 
 const { height: screenHeight } = Dimensions.get("screen")
 
-export function useCardAnimation(cardId: string, selectedCardId?: string | null) {
+export default function useCardAnimation(cardId: string, selectedCardId?: string | null) {
   const positionY = useSharedValue(0)
   const cardRef = useRef<View>(null)
   const insets = useSafeAreaInsets()

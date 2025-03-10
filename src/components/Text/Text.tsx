@@ -4,7 +4,8 @@ import {
   TextStyle
 } from 'react-native';
 
-import { COLORS, TVariantText, TYPOGRAPHY } from '../../styles';
+import COLORS from '../../styles/Colors';
+import TYPOGRAPHY, { TVariantText } from '../../styles/Typography';
 
 interface ITextProps extends TextProps {
   children: string | string[];

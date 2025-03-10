@@ -1,7 +1,7 @@
 import { TextStyle } from "react-native"
 import FlashMessage, { showMessage, hideMessage, MessageOptions } from "react-native-flash-message"
 
-import { TYPOGRAPHY } from "../../styles"
+import TYPOGRAPHY from "../../styles/Typography"
 import styles from "./styles"
 
 interface IShowMessage {

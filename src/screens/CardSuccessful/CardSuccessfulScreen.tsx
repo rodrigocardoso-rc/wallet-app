@@ -1,12 +1,16 @@
 import { View } from "react-native"
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 
-import { Background, TitleAnimated, CardData, Text, Button } from "../../components"
+import { ICardTyped } from "../../@types/CardsTyped"
+import Text from "../../components/Text/Text"
+import Button from "../../components/Button/Button"
+import CardData from "../../components/CardData/CardData"
+import Background from "../../components/Background/Background"
+import TitleAnimated from "../../components/TitleAnimated/TitleAnimated"
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
 import { SCREENS_NAME } from "../../screens/ScreensName"
 
 import styles from "./styles"
-import { ICardTyped } from "../../@types"
 
 export interface ICardSuccessfulScreenParams {
   card: ICardTyped

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { View } from "react-native";
 
-import { ICardTyped } from "../../@types";
-import { Text, CardData, Button } from "../../components";
-import { useCardList } from "../../hooks";
+import { ICardTyped } from "../../@types/CardsTyped";
+import  Text  from "../../components/Text/Text";
+import  Button  from "../../components/Button/Button";
+import  CardData  from "../../components/CardData/CardData";
+import useCardList from "../../hooks/useCardList";
 
 import styles from "./styles";
 

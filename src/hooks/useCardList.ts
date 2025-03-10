@@ -1,7 +1,7 @@
 import { useContext } from "react"
-import { CardsContext } from "../contexts";
+import { CardsContext } from "../contexts/CardsContext";
 
-export function useCardList() {
+export default function useCardList() {
   const context = useContext(CardsContext)
 
   return context

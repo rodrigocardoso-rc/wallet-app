@@ -5,7 +5,7 @@ import {
 } from "react-native";
 
 import Text from "../Text/Text";
-import { TYPOGRAPHY } from "../../styles";
+import TYPOGRAPHY from "../../styles/Typography";
 import styles from "./styles";
 
 interface IIconTextInput {

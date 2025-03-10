@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 
-import { LargeWallet, SmallWallet } from "../../assets/Images";
-import { Background } from "../../components";
-import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
+import * as FlashMessage from "../../modules/FlashMessage/FlashMessage";
 import { SCREENS_NAME } from "../ScreensName"
-import { FlashMessage } from "../../modules";
-import { useCardList, useImageAnimation } from "../../hooks";
+import { LargeWallet, SmallWallet } from "../../assets/Images";
+import Background from "../../components/Background/Background";
+import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
+import useCardList from "../../hooks/useCardList";
+import useImageAnimation from "../../hooks/useImageAnimation";
 
 import styles from "./styles";
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
-import { TYPOGRAPHY, TVariantText } from '../../styles';
-import { useTitleAnimation } from '../../hooks';
+import TYPOGRAPHY, { TVariantText } from '../../styles/Typography';
+import useTitleAnimation from '../../hooks/useTitleAnimation';
 
 interface ITextProps {
   variant: TVariantText;

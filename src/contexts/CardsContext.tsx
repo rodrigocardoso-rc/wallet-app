@@ -1,7 +1,7 @@
 import { createContext, ReactElement, useState } from "react"
 
 import * as Cards from "../services/CardsServices/CardsServices"
-import { ICardTyped, IFormCardData } from "../@types";
+import { ICardTyped, IFormCardData } from "../@types/CardsTyped";
 
 interface ICardsContext {
   cardsList: ICardTyped[];

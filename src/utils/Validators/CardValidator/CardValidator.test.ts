@@ -1,6 +1,5 @@
 import { cardNumber, expirationDate, ownerName, securityCode } from "./CardValidator"
 
-
 describe('CardValidator', () => {
   describe('cardNumber', () => {
     it('should be valid card number', () => {

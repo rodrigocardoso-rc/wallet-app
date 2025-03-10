@@ -4,7 +4,7 @@ import { useSharedValue, withRepeat, withSpring, withSequence } from "react-nati
 
 const { width } = Dimensions.get('screen')
 
-export function useBackgroundAnimation() {
+export default function useBackgroundAnimation() {
   const itemDimension = useSharedValue(width)
 
   useEffect(() => {
