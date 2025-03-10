@@ -1,15 +1,15 @@
-import BackgroundScreen from './BackgroundScreen'
-import Button from './Button'
-import CardData from './CardData'
-import HeaderFilled from './HeaderFilled'
-import HeaderOutlined from './HeaderOutlined'
-import Input from './Input'
-import SideItensAnimated from './SideItemsAnimated'
-import Text from './Text'
-import TitleAnimated from './TitleAnimated'
+import Background from './Background/Background'
+import Button from './Button/Button'
+import CardData from './CardData/CardData'
+import HeaderFilled from './HeaderFilled/HeaderFilled'
+import HeaderOutlined from './HeaderOutlined/HeaderOutlined'
+import Input from './Input/Input'
+import SideItensAnimated from './SideItemsAnimated/SideItensAnimated'
+import Text from './Text/Text'
+import TitleAnimated from './TitleAnimated/TitleAnimated'
 
 export {
-  BackgroundScreen,
+  Background,
   Button,
   CardData,
   HeaderFilled,

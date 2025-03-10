@@ -1,8 +1,8 @@
-import CardsListScreen from "./CardsList";
-import HomeScreen from "./Home";
-import LoadingWalletScreen from "./LoadingWallet";
-import NewCardScreen from "./NewCard";
-import CardSuccessfulScreen from "./CardSuccessful";
+import CardsListScreen from "./CardsList/CardsListScreen";
+import HomeScreen from "./Home/HomeScreen";
+import LoadingWalletScreen from "./LoadingWallet/LoadingWalletScreen";
+import NewCardScreen from "./NewCard/NewCardScreen";
+import CardSuccessfulScreen from "./CardSuccessful/CardSuccessfulScreen";
 
 export {
   CardsListScreen,

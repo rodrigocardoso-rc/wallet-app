@@ -1,16 +1,16 @@
 import { ReactElement } from "react"
 import { View, SafeAreaView } from "react-native"
 
-import SideItensAnimated from "../SideItemsAnimated"
+import SideItensAnimated from "../SideItemsAnimated/SideItensAnimated"
 import { useBackgroundAnimation } from "../../hooks"
 import styles from "./styles"
 
-interface IBackgroundScreenProps {
+interface IBackgroundProps {
   animated?: boolean;
   children: ReactElement | ReactElement[];
 }
 
-export default function BackgroundScreen({ animated = false, children }: IBackgroundScreenProps) {
+export default function Background({ animated = false, children }: IBackgroundProps) {
   const itemDimension = useBackgroundAnimation()
 
   return (

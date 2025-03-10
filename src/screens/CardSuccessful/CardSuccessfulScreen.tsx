@@ -1,7 +1,7 @@
 import { View } from "react-native"
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 
-import { BackgroundScreen, TitleAnimated, CardData, Text, Button } from "../../components"
+import { Background, TitleAnimated, CardData, Text, Button } from "../../components"
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
 import { SCREENS_NAME } from "../../screens/ScreensName"
 
@@ -28,7 +28,7 @@ export default function CardSuccessfulScreen() {
   }
 
   return (
-    <BackgroundScreen>
+    <Background>
       <View style={styles.container}>
         <View style={styles.textContainer}>
           <TitleAnimated variant="h1" style={styles.text}>
@@ -47,7 +47,7 @@ export default function CardSuccessfulScreen() {
           variant={"default"}
           onPress={onPressNext} />
       </View>
-    </BackgroundScreen>
+    </Background>
   )
 
 }

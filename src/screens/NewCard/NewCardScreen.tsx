@@ -7,10 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup";
 
 import {
-  Input,
-  Button,
-  BackgroundScreen,
-  TitleAnimated
+  Input, Button,
+  Background, TitleAnimated
 } from "../../components";
 import { Camera } from "../../assets/Icons";
 import { ICard } from "../../model";
@@ -119,7 +117,7 @@ export default function NewCardScreen() {
   }
 
   return (
-    <BackgroundScreen>
+    <Background>
       <StatusBar hidden />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -222,6 +220,6 @@ export default function NewCardScreen() {
             onPress={handleSubmit(createCard)} />
         </ScrollView>
       </KeyboardAvoidingView>
-    </BackgroundScreen>
+    </Background>
   );
 }

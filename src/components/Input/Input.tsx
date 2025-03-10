@@ -4,7 +4,7 @@ import {
   TextStyle, TouchableOpacity, View
 } from "react-native";
 
-import Text from "../Text";
+import Text from "../Text/Text";
 import { TYPOGRAPHY } from "../../styles";
 import styles from "./styles";
 

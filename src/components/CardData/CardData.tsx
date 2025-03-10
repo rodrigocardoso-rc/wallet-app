@@ -2,7 +2,7 @@ import React from "react"
 import { View, TouchableWithoutFeedback } from "react-native"
 import Animated, { useAnimatedStyle } from "react-native-reanimated"
 
-import Text from "../Text";
+import Text from "../Text/Text";
 import { Mask } from '../../utils'
 import { CARD_HEIGHT, OVERLAP, useCardAnimation } from "../../hooks/useCardAnimation"
 import { ICardListTyped } from "../../@types"

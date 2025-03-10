@@ -4,7 +4,7 @@ import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming
 
 import { LargeWallet, SmallWallet } from "../../assets/Images";
 import { CardsContext } from "../../contexts/CardsContext";
-import { BackgroundScreen } from "../../components";
+import { Background } from "../../components";
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
 import { SCREENS_NAME } from "../ScreensName"
 import { FlashMessage } from "../../modules";
@@ -68,7 +68,7 @@ export default function LoadingWalletScreen() {
   });
 
   return (
-    <BackgroundScreen animated>
+    <Background animated>
       <Animated.View style={[styles.container]}>
         {canNavigate ? (
           <Animated.View style={animatedStyle}>
@@ -78,6 +78,6 @@ export default function LoadingWalletScreen() {
           <SmallWallet height={68} width={68} />
         )}
       </Animated.View>
-    </BackgroundScreen>
+    </Background>
   );
 }
