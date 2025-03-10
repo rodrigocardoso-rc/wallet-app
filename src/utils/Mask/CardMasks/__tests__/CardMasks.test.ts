@@ -38,4 +38,21 @@ describe('CardMasks', () => {
       expect(applyMaskHideCardNumber(cardNumber)).toBe('**** **** **** 8727')
     })
   })
+
+  describe('applyMaskExpirationDate', () => {
+    it('should return a masked expiration date. Receiving only numbers', () => {
+      const expirationDate = '1234';
+      expect(applyMaskExpirationDate(expirationDate)).toBe('12/34');
+    })
+
+    it('should return a masked expiration date. Receiving numbers and characters', () => {
+      const expirationDate = '12/34';
+      expect(applyMaskExpirationDate(expirationDate)).toBe('12/34')
+    })
+
+    it('should return a masked masked expiration date. receiving numbers and spaces', () => {
+      const expirationDate = '12 34';
+      expect(applyMaskExpirationDate(expirationDate)).toBe('12/34')
+    })
+  })
 })

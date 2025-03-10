@@ -11,7 +11,7 @@ import {
   Background, TitleAnimated
 } from "../../components";
 import { Camera } from "../../assets/Icons";
-import { Mask } from '../../utils';
+import * as Mask from '../../utils/Mask/CardMasks/CardMasks';
 import { Validators } from '../../utils'
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 import { SCREENS_NAME } from "../ScreensName";

@@ -1,8 +1,9 @@
 import { ICardTyped, IFormCardData } from "../../@types";
 import { ICard } from "../../model";
-import { RestApi, Uuid } from "../../modules";
+import * as RestApi from "../../modules/RestApi/RestApi";
+import * as Uuid from "../../modules/Uuid/Uuid";
 
-const CARD_SERVICE = '/cards';
+export const CARD_SERVICE = '/cards';
 
 export async function getCards(): Promise<ICardTyped[]>{
   const res = await RestApi.httpGet<ICard[]>(CARD_SERVICE);
