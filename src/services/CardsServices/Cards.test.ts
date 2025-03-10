@@ -1,5 +1,5 @@
-import { getCards, createCards } from "../CardsServices";
-import * as RestApi from "../../../modules/RestApi/RestApi";
+import { getCards, createCards } from "./CardsServices";
+import * as RestApi from "../../modules/RestApi/RestApi";
 
 const cardFromApiMock = {
   id: "4ec42ba9-50af-40d2-af90-8312edbd9ca2",

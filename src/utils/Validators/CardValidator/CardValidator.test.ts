@@ -1,4 +1,4 @@
-import { cardNumber, expirationDate, ownerName, securityCode } from "../CardValidator"
+import { cardNumber, expirationDate, ownerName, securityCode } from "./CardValidator"
 
 
 describe('CardValidator', () => {

@@ -2,7 +2,7 @@ import {
   applyMaskCardNumber,
   applyMaskExpirationDate,
   applyMaskHideCardNumber
-} from '../CardMasks'
+} from './CardMasks'
 
 describe('CardMasks', () => {
   describe('applyMaskCardNumber', () => {
