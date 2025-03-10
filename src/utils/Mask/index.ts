@@ -1,6 +1,8 @@
-import { applyMaskCardNumber } from './CardNumbers'
-import { applyMaskHideCardNumber } from './HideCardNumbers'
-import { applyMaskExpirationDate } from './ExpirationDate'
+import {
+  applyMaskCardNumber,
+  applyMaskHideCardNumber,
+  applyMaskExpirationDate
+} from './CardMasks'
 
 export default {
   applyMaskCardNumber,

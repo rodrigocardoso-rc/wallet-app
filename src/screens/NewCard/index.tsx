@@ -3,30 +3,55 @@ import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from "yup";
 
-import { Camera } from "../../assets/icons";
-import { ICard } from "../../model";
 import {
   Input,
   Button,
   BackgroundScreen,
   TitleAnimated
 } from "../../components";
-import { Mask } from '../../utils'
+import { Camera } from "../../assets/Icons";
+import { ICard } from "../../model";
 import { Uuid } from "../../modules";
+import { Mask } from '../../utils';
+import { Validators } from '../../utils'
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 import { SCREENS_NAME } from "../ScreensName";
+import { CardsContext } from "../../contexts/CardsContext";
+import { FlashMessage } from "../../modules";
+import { ICardListTyped } from "../../@types";
 
 import styles from "./styles";
-import { CardsContext } from "../../contexts/CardsContext";
-import { FlashMessage, FormValidator } from "../../modules";
 
-interface IFormData {
-  cardNumber: string;
-  ownerName: string;
-  expirationData: string;
-  securityCode: string;
+type IFormData = Omit<ICardListTyped, 'id' | 'type'>;
+
+const INITIAL_VALUES = {
+  cardNumber: "",
+  ownerName: "",
+  expirationDate: "",
+  securityCode: "",
 }
+
+const validationSchema = yup.object().shape({
+  cardNumber: yup
+    .string()
+    .test("valid-card", "Número de cartão inválido", (value) => Validators.cardNumber(value || ""))
+    .required("Campo obrigatório"),
+  ownerName: yup
+    .string()
+    .test("valid-name", "Nome inválido", (value) => Validators.ownerName(value || ""))
+    .required("Campo obrigatório"),
+  expirationDate: yup
+    .string()
+    .test("valid-date", "Data de vencimento inválida", (value) => Validators.expirationDate(value || ""))
+    .required("Campo obrigatório"),
+  securityCode: yup
+    .string()
+    .test("valid-cvv", "Código inválido", (value) => Validators.securityCode(value || ""))
+    .required("Campo obrigatório"),
+})
 
 export default function NewCardScreen() {
   const { addCard } = useContext(CardsContext);
@@ -40,14 +65,9 @@ export default function NewCardScreen() {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    resolver: FormValidator.resolver(FormValidator.formCardValidationSchema),
+    resolver: yupResolver(validationSchema),
     mode: "onChange",
-    defaultValues: {
-      cardNumber: "",
-      ownerName: "",
-      expirationData: "",
-      securityCode: "",
-    },
+    defaultValues: INITIAL_VALUES
   });
 
   async function createCard(form: IFormData) {
@@ -58,18 +78,18 @@ export default function NewCardScreen() {
         id: Uuid.generateUUid(),
         number: form.cardNumber,
         name: form.ownerName,
-        expirationDate: form.expirationData,
+        expirationDate: form.expirationDate,
         cvv: form.securityCode,
       };
 
-      await addCard(cardDto);
+      const res = await addCard(cardDto);
 
       FlashMessage.show({
         message: 'Cartão cadastrado com sucesso',
         type: 'success'
       });
 
-      goToCardSuccessful(cardDto);
+      goToCardSuccessful(res);
     } catch (error) {
       FlashMessage.show({
         message: 'Ocorreu um problema ao criar o cartão. Tente novamente mais tarde',
@@ -101,9 +121,18 @@ export default function NewCardScreen() {
   return (
     <BackgroundScreen>
       <StatusBar hidden />
-      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.keyBoardContainer}>
-        <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-          <TitleAnimated fromBottom variant="h1" style={styles.title}>Wallet Test</TitleAnimated>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.keyBoardContainer}>
+        <ScrollView
+          contentContainerStyle={styles.container}
+          keyboardShouldPersistTaps="handled">
+          <TitleAnimated
+            fromBottom
+            variant="h1"
+            style={styles.title}>
+            Wallet Test
+          </TitleAnimated>
 
           <Controller
             control={control}
@@ -148,7 +177,7 @@ export default function NewCardScreen() {
           <View style={styles.mediumInputsContainer}>
             <Controller
               control={control}
-              name="expirationData"
+              name="expirationDate"
               render={({ field: { onChange, value } }) => (
                 <Input
                   ref={(ref) => (inputsRef.current.expirationData = ref)}
@@ -159,7 +188,7 @@ export default function NewCardScreen() {
                   maxLength={5}
                   size="medium"
                   onChangeText={onChange}
-                  error={errors.expirationData?.message}
+                  error={errors.expirationDate?.message}
                   onSubmitEditing={() => onSubmitEditing("securityCode")}
                 />
               )}

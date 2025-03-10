@@ -8,5 +8,5 @@ export function getCards() {
 }
 
 export function createCards(card: ICard) {
-  return RestApi.httpPost(CARD_SERVICE, card);
+  return RestApi.httpPost<ICard>(CARD_SERVICE, card);
 }

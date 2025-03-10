@@ -1,5 +1,5 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native"
+import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack"
 
 import {
   CardsListScreen,
@@ -9,22 +9,22 @@ import {
   CardSuccessfulScreen,
 } from '../screens'
 import { SCREENS_NAME } from "../screens/ScreensName"
-
 import { HeaderOutlined, HeaderFilled } from "../components"
+
 import { ICardSuccessfulScreenParams } from "../screens/CardSuccessful"
 import { ILoadingWalletScreenParams } from "../screens/LoadingWallet"
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export type RootStackParamList = {
-  [SCREENS_NAME.home]: undefined;
-  [SCREENS_NAME.newCard]: undefined;
+  [SCREENS_NAME.home]: undefined
+  [SCREENS_NAME.newCard]: undefined
   [SCREENS_NAME.cardSuccessful]: ICardSuccessfulScreenParams,
   [SCREENS_NAME.loadingWallet]?: ILoadingWalletScreenParams,
   [SCREENS_NAME.cardsList]: undefined
-};
+}
 
-export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>
 
 export default function AppNavigator() {
 

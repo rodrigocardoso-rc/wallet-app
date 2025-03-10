@@ -34,6 +34,7 @@ export default function HomeScreen() {
             onPress={onPressMyCards} />
 
           <Button
+            isAnimated
             variant={"secondary"}
             text={"Cadastrar cartão"}
             onPress={onPressNewCard} />

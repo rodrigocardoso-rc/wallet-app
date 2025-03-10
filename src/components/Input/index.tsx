@@ -1,24 +1,26 @@
 import { forwardRef, ReactElement, Ref } from "react";
-import { TextInput, TextInputProps, TextStyle, TouchableOpacity, View } from "react-native";
+import {
+  TextInput, TextInputProps,
+  TextStyle, TouchableOpacity, View
+} from "react-native";
 
+import { Text } from "../";
 import { TYPOGRAPHY } from "../../styles";
-import Text from "../Text";
-
 import styles from "./styles";
 
 interface IIconTextInput {
-  Component: ReactElement,
-  onPress: () => void
+  Component: ReactElement;
+  onPress: () => void;
 }
 
 interface IInputProps extends TextInputProps {
-  label: string,
-  icon?: IIconTextInput,
-  size?: 'large' | 'medium',
-  mask?: string,
-  error?: string
+  label: string;
+  icon?: IIconTextInput;
+  size?: 'large' | 'medium';
+  mask?: string;
+  error?: string;
 
-  onChangeText: (newValue: string) => void
+  onChangeText: (newValue: string) => void;
 }
 
 function InputComponent({

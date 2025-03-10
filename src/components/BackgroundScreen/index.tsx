@@ -1,43 +1,27 @@
-import { ReactElement, useEffect } from "react";
-import { View, Dimensions, SafeAreaView } from "react-native";
-import { useSharedValue, withRepeat, withSpring, withSequence } from "react-native-reanimated";
+import { ReactElement } from "react"
+import { View, SafeAreaView } from "react-native"
 
-import SideItensAnimated from "../SideItemsAnimated";
-import styles from "./styles";
-
-const { width } = Dimensions.get('screen')
+import { SideItensAnimated } from "../"
+import { useBackgroundAnimation } from "../../hooks"
+import styles from "./styles"
 
 interface IBackgroundScreenProps {
-  animated?: boolean,
-  children: ReactElement | ReactElement[]
+  animated?: boolean;
+  children: ReactElement | ReactElement[];
 }
 
 export default function BackgroundScreen({ animated = false, children }: IBackgroundScreenProps) {
-  const itemDimension = useSharedValue(width);
-
-  useEffect(() => {
-    if (animated)
-      createAnimation()
-  }, [animated])
-
-  function createAnimation() {
-    itemDimension.value = withRepeat(
-      withSequence(
-        withSpring(width, { duration: 1000 }),
-        withSpring(width + width / 5, { duration: 1000 }),
-      ),
-      -1,
-      true
-    )
-  }
+  const itemDimension = useBackgroundAnimation()
 
   return (
     <View style={styles.container}>
       <SideItensAnimated
+        animated={animated}
         dimension={itemDimension}
         position="topSide" />
 
       <SideItensAnimated
+        animated={animated}
         dimension={itemDimension}
         position="bottomSide" />
 

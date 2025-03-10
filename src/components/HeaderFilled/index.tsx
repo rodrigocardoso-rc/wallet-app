@@ -1,15 +1,15 @@
 import { TouchableOpacity, View } from "react-native";
-
-import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ArrowLeft, Plus } from "../../assets/icons";
-import Text from "../Text";
+
+import { Text } from "../";
+import { ArrowLeft, Plus } from "../../assets/Icons";
 import { SCREENS_NAME } from "../../screens/ScreensName";
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
+import styles from "./styles";
 
 interface IHeaderFilledProps {
-  title: string
+  title: string;
 }
 
 export default function HeaderFilled({ title }: IHeaderFilledProps) {

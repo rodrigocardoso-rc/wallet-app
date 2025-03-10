@@ -1,12 +1,12 @@
-import { TextStyle } from "react-native";
-import FlashMessage, { showMessage, hideMessage, MessageOptions } from "react-native-flash-message";
+import { TextStyle } from "react-native"
+import FlashMessage, { showMessage, hideMessage, MessageOptions } from "react-native-flash-message"
 
-import { TYPOGRAPHY } from "../../styles";
-import styles from "./styles";
+import { TYPOGRAPHY } from "../../styles"
+import styles from "./styles"
 
 interface IShowMessage {
-  message: string,
-  type: 'success' | 'info' | 'danger'
+  message: string;
+  type: 'success' | 'info' | 'danger';
 }
 
 const DURATION = 3 * 1000

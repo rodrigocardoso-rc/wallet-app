@@ -3,29 +3,14 @@ import { View } from "react-native";
 import { Text, CardData, Button } from "../../components";
 import { useContext, useState } from "react";
 import { CardsContext } from "../../contexts/CardsContext";
-import { ICard } from "../../model";
-import { Card } from "../../utils";
-
-interface ICardListTyped extends ICard {
-  type: 'green' | 'black'
-}
+import { useCardListTyped } from "../../hooks";
+import { ICardListTyped } from "../../@types";
 
 export default function CardsListScreen() {
   const { cardsList } = useContext(CardsContext)
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
-  const [cardListTyped, setCardListTyped] = useState<ICardListTyped[]>(
-    cardsList.map((card, idx) => ({ ...card, type: Card.getCardType(idx) })))
-
-
-  function swapCards(cards: ICardListTyped[], idx: number): ICardListTyped[] {
-    const lastIndex = cards.length - 1;
-
-    const updatedCards = [...cards];
-    [updatedCards[idx], updatedCards[lastIndex]] = [updatedCards[lastIndex], updatedCards[idx]];
-
-    return updatedCards;
-  }
+  const { cardListTyped, swapCards } = useCardListTyped(cardsList);
 
   function onPressCard(cardId: string, idx: number) {
     if (selectedCardId) {
@@ -34,22 +19,20 @@ export default function CardsListScreen() {
     }
 
     setSelectedCardId(cardId);
-    setCardListTyped((prevCards) => swapCards(prevCards, idx));
+    swapCards(idx)
   }
-
 
   function onPressPayWithCard() {
     // TODO: Implements payment feature
   }
 
   function renderItem(card: ICardListTyped, idx: number,) {
-    const { id, type } = card
+    const { id } = card
 
     return (
       <CardData
         key={id}
         card={card}
-        type={type}
         index={idx}
         selectedCardId={selectedCardId}
         onPress={() => onPressCard(id, idx)} />

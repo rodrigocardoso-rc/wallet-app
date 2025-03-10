@@ -1,7 +1,9 @@
-import { cardNumber } from './CardNumber'
-import { expirationDate } from './ExpirationDate'
-import { ownerName } from './OwnerName'
-import { securityCode } from './SecurityCode'
+import {
+  cardNumber,
+  expirationDate,
+  ownerName,
+  securityCode
+} from './CardValidator'
 
 export default {
   cardNumber,

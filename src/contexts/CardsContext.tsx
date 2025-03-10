@@ -1,5 +1,5 @@
-import { createContext, ReactElement, useState } from "react";
-import { ICard } from "../model";
+import { createContext, ReactElement, useState } from "react"
+import { ICard } from "../model"
 import { Cards } from "../services"
 
 interface ICardsContext {
@@ -14,10 +14,10 @@ const INITIAL_CONTEXT: ICardsContext = {
   addCard: () => Promise.resolve({} as ICard)
 }
 
-export const CardsContext = createContext<ICardsContext>(INITIAL_CONTEXT);
+export const CardsContext = createContext<ICardsContext>(INITIAL_CONTEXT)
 
 export function CardsProvider({ children }: { children: ReactElement | ReactElement[] }) {
-  const [cardsList, setCardsList] = useState<ICard[]>([]);
+  const [cardsList, setCardsList] = useState<ICard[]>([])
 
   async function fetchCards(syncFromApi?: boolean) {
     if (!cardsList.length || syncFromApi) {

@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native'
 import { COLORS } from '../../styles'
 
 export default StyleSheet.create({
+  animatedViewContainer: {
+    width: '100%',
+  },
   container: {
     width: '100%',
     alignItems: 'center',

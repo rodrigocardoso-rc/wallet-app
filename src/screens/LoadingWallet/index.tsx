@@ -2,14 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
-import { LargeWallet, SmallWallet } from "../../assets/images";
+import { LargeWallet, SmallWallet } from "../../assets/Images";
 import { CardsContext } from "../../contexts/CardsContext";
 import { BackgroundScreen } from "../../components";
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
-
-import styles from "./styles";
 import { SCREENS_NAME } from "../ScreensName"
 import { FlashMessage } from "../../modules";
+
+import styles from "./styles";
+import { useImageAnimation } from "../../hooks";
 
 export interface ILoadingWalletScreenParams {
   syncFromApi?: boolean
@@ -21,15 +22,12 @@ export default function LoadingWalletScreen() {
   const { fetchCards } = useContext(CardsContext)
   const navigation = useNavigation<RootStackNavigationProp>()
   const { params } = useRoute<TRouteParams>()
-  const walletImageScale = useSharedValue(1)
 
   const [canNavigate, setCanNavigate] = useState(false)
 
+  const walletImageScale = useImageAnimation(canNavigate, navigateToCardsList)
+
   useEffect(() => { fetchCardsList() }, [])
-  useEffect(() => {
-    if (canNavigate)
-      execAnimation(navigateToCardsList)
-  }, [canNavigate]);
 
   async function fetchCardsList() {
     try {
@@ -61,14 +59,6 @@ export default function LoadingWalletScreen() {
       index: 0,
       routes: [{ name: SCREENS_NAME.home }]
     })
-  }
-
-  function execAnimation(callBack: () => void) {
-    walletImageScale.value = withTiming(
-      2,
-      { duration: 1200, easing: Easing.ease },
-      () => runOnJS(callBack)()
-    );
   }
 
   const animatedStyle = useAnimatedStyle(() => {

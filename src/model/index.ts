@@ -1,5 +1,3 @@
-import { ICard } from "./Card";
+import { ICard } from "./Card"
 
-export {
-  ICard
-}
+export { ICard }
