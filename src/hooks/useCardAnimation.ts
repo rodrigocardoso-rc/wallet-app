@@ -1,10 +1,10 @@
-// src/animations/useCardAnimation.ts
 import { useState, useEffect, useRef } from "react"
 import { Dimensions, View } from "react-native"
 import { useSharedValue, withTiming, Easing } from "react-native-reanimated"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 
-import { OVERLAP, CARD_HEIGHT } from "../components/CardData"
+export const CARD_HEIGHT = 200
+export const OVERLAP = 60
 
 const { height: screenHeight } = Dimensions.get("screen")
 

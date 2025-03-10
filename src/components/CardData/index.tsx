@@ -2,9 +2,9 @@ import React from "react"
 import { View, TouchableWithoutFeedback } from "react-native"
 import Animated, { useAnimatedStyle } from "react-native-reanimated"
 
-import { Text } from '../'
+import Text from "../Text";
 import { Mask } from '../../utils'
-import { useCardAnimation } from "../../hooks/useCardAnimation"
+import { CARD_HEIGHT, OVERLAP, useCardAnimation } from "../../hooks/useCardAnimation"
 import { ICardListTyped } from "../../@types"
 
 import styles from "./styles"
@@ -15,9 +15,6 @@ interface ICardDataProps {
   selectedCardId?: string | null;
   onPress?: () => void
 }
-
-export const CARD_HEIGHT = 200
-export const OVERLAP = 60
 
 export default function CardData({
   card,

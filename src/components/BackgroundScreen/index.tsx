@@ -1,7 +1,7 @@
 import { ReactElement } from "react"
 import { View, SafeAreaView } from "react-native"
 
-import { SideItensAnimated } from "../"
+import SideItensAnimated from "../SideItemsAnimated"
 import { useBackgroundAnimation } from "../../hooks"
 import styles from "./styles"
 

@@ -1,7 +1,7 @@
 import { ActivityIndicator, TouchableOpacity } from "react-native";
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 
-import { Text } from "../";
+import Text from "../Text";
 import { useButtonAnimation } from "../../hooks";
 
 import styles from "./styles";
