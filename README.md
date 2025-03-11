@@ -55,7 +55,7 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
 
     ```sh
     ipconfig # No Windows
-    ifconfig # No Mac/Linux
+    ipconfig getifaddr en0 # No Mac
     ```
 
 -   Copie o endereço IPV4 exibido.
