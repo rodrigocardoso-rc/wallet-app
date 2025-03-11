@@ -124,7 +124,6 @@ export default function NewCardScreen() {
             render={({ field: { onChange, value } }) => (
               <Input
                 ref={(ref) => (inputsRef.current.cardNumber = ref)}
-                autoFocus
                 label="Número do cartão"
                 value={CardMasks.applyMaskCardNumber(value)}
                 maxLength={19}

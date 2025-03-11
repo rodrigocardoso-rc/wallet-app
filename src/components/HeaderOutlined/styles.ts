@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   iconContainer: {
     position: "absolute",
-    bottom: 0,
+    bottom: SPACING.margin.medium,
     left: SPACING.margin.medium,
     paddingVertical: SPACING.padding.medium,
     paddingRight: SPACING.padding.large,
@@ -18,6 +18,9 @@ export default StyleSheet.create({
   icon: {
     height: 22,
     width: 22,
+  },
+  titleContainer: {
+    paddingVertical: SPACING.padding.medium,
   },
   title: {
     color: COLORS.base.blueLight

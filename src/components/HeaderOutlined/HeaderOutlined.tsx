@@ -24,12 +24,14 @@ export default function HeaderOutlined({ title }: IHeaderOutlinedProps) {
         <ArrowLeft height={styles.icon.height} width={styles.icon.width} />
       </TouchableOpacity>
 
-      <Text
-        variant="h3"
-        color={styles.title.color}
-        style={styles.title}>
-        {title}
-      </Text>
+      <View style={styles.titleContainer}>
+        <Text
+          variant="h3"
+          color={styles.title.color}
+          style={styles.title}>
+          {title}
+        </Text>
+      </View>
     </View>
   );
 }
