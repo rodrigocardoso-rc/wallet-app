@@ -45,7 +45,7 @@ export default function CardData({
         unfocused && styles.unfocused
       ]}>
       <TouchableOpacity
-        activeOpacity={0}
+        activeOpacity={1}
         onPress={onPress}
         style={styles.container}>
         <Text
