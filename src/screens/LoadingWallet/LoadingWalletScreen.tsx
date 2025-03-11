@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 
-import * as FlashMessage from "../../modules/FlashMessage/FlashMessage";
 import { SCREENS_NAME } from "../ScreensName"
 import { LargeWallet, SmallWallet } from "../../assets/Images";
 import Background from "../../components/Background/Background";
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
 import useCardList from "../../hooks/UseCardList/useCardList";
 import useImageAnimation from "../../hooks/UseImageAnimation/useImageAnimation";
+import { showFlashMessage } from "../../modules/FlashMessage/FlashMessage";
 
 import styles from "./styles";
 
@@ -34,7 +34,7 @@ export default function LoadingWalletScreen() {
       setCanNavigate(true)
     }
     catch (err) {
-      FlashMessage.show({
+      showFlashMessage({
         message: 'Ocorreu um problema ao carregar os cartões. Tente novamente mais tarde',
         type: 'danger'
       })

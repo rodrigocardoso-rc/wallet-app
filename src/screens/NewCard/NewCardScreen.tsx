@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
-import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -16,7 +15,7 @@ import TitleAnimated from "../../components/TitleAnimated/TitleAnimated";
 import * as CardMasks from '../../utils/Mask/CardMasks/CardMasks';
 import * as CardValidator from '../../utils/Validators/CardValidator/CardValidator'
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
-import * as FlashMessage from "../../modules/FlashMessage/FlashMessage";
+import { showFlashMessage } from "../../modules/FlashMessage/FlashMessage";
 import useCardList from "../../hooks/UseCardList/useCardList";
 
 import styles from "./styles";
@@ -70,14 +69,14 @@ export default function NewCardScreen() {
 
       const res = await addCard(form);
 
-      FlashMessage.show({
+      showFlashMessage({
         message: 'Cartão cadastrado com sucesso',
         type: 'success'
       });
 
       goToCardSuccessful(res);
     } catch (error) {
-      FlashMessage.show({
+      showFlashMessage({
         message: 'Ocorreu um problema ao criar o cartão. Tente novamente mais tarde',
         type: 'danger'
       });
@@ -106,7 +105,6 @@ export default function NewCardScreen() {
 
   return (
     <Background>
-      <StatusBar hidden />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyBoardContainer}>

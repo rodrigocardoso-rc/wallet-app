@@ -1,8 +1,9 @@
 import { TextStyle } from "react-native"
-import FlashMessage, { showMessage, hideMessage, MessageOptions } from "react-native-flash-message"
+import { showMessage, hideMessage, MessageOptions } from "react-native-flash-message"
+import FlashMessage from "../../components/FlashMessage/FlashMessage";
 
 import TYPOGRAPHY from "../../styles/Typography"
-import styles from "./styles"
+import COLORS from "../../styles/Colors";
 
 interface IShowMessage {
   message: string;
@@ -11,10 +12,16 @@ interface IShowMessage {
 
 const DURATION = 3 * 1000
 
-function show({ message, type }: IShowMessage) {
+const BACKGROUND_COLORS = {
+  success: COLORS.alert.green,
+  info: COLORS.alert.yellow,
+  danger: COLORS.alert.red
+}
+
+function showFlashMessage({ message, type }: IShowMessage) {
   const options: MessageOptions = {
     message: message,
-    style: [styles.container, styles[type]],
+    backgroundColor: BACKGROUND_COLORS[type],
     titleStyle: TYPOGRAPHY.h5 as TextStyle,
     duration: DURATION
   }
@@ -22,12 +29,9 @@ function show({ message, type }: IShowMessage) {
   return showMessage(options)
 }
 
-function hide() {
+function hideFlashMessage() {
   return hideMessage()
 }
 
-export {
-  FlashMessage as FlashMessageComponent,
-  hide,
-  show
-}
+export { hideFlashMessage, showFlashMessage }
+export default FlashMessage

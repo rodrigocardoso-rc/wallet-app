@@ -1,18 +1,29 @@
-import { useState } from "react";
-import { View } from "react-native";
+import { useCallback, useState } from "react";
+import { StatusBar, View } from "react-native";
 
 import { ICardTyped } from "../../@types/CardsTyped";
-import  Text  from "../../components/Text/Text";
-import  Button  from "../../components/Button/Button";
-import  CardData  from "../../components/CardData/CardData";
+import Text from "../../components/Text/Text";
+import Button from "../../components/Button/Button";
+import CardData from "../../components/CardData/CardData";
 import useCardList from "../../hooks/UseCardList/useCardList";
 
 import styles from "./styles";
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function CardsListScreen() {
+  const { cardsList, swapCards } = useCardList();
+
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
-  const { cardsList, swapCards } = useCardList();
+  useFocusEffect(
+    useCallback(() => {
+      StatusBar.setBarStyle('dark-content'); // Troca para branco ao entrar
+
+      return () => {
+        StatusBar.setBarStyle('light-content'); // Volta ao padrão ao sair
+      };
+    }, [])
+  );
 
   function onPressCard(cardId: string, idx: number) {
     if (selectedCardId) {

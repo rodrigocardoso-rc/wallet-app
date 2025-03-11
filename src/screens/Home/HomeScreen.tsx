@@ -1,5 +1,4 @@
 import { View } from "react-native";
-import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 
 import { SCREENS_NAME } from "../ScreensName";
@@ -23,8 +22,6 @@ export default function HomeScreen() {
 
   return (
     <Background>
-      <StatusBar hidden />
-
       <View style={styles.container}>
         <TitleAnimated variant="h1" style={{ color: 'white' }}>
           Wallet Test
