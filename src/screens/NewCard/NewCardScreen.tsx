@@ -17,9 +17,9 @@ import * as CardMasks from '../../utils/Mask/CardMasks/CardMasks';
 import * as CardValidator from '../../utils/Validators/CardValidator/CardValidator'
 import { RootStackNavigationProp } from "../../navigators/AppNavigator";
 import * as FlashMessage from "../../modules/FlashMessage/FlashMessage";
+import useCardList from "../../hooks/UseCardList/useCardList";
 
 import styles from "./styles";
-import useCardList from "../../hooks/useCardList";
 
 const INITIAL_VALUES = {
   cardNumber: "",

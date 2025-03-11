@@ -5,7 +5,7 @@ import { ICardTyped } from "../../@types/CardsTyped";
 import  Text  from "../../components/Text/Text";
 import  Button  from "../../components/Button/Button";
 import  CardData  from "../../components/CardData/CardData";
-import useCardList from "../../hooks/useCardList";
+import useCardList from "../../hooks/UseCardList/useCardList";
 
 import styles from "./styles";
 

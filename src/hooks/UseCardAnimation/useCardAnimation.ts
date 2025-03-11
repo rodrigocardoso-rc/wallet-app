@@ -6,9 +6,9 @@ import { useSafeAreaInsets } from "react-native-safe-area-context"
 export const CARD_HEIGHT = 200
 export const OVERLAP = 60
 
-const { height: screenHeight } = Dimensions.get("screen")
 
 export default function useCardAnimation(cardId: string, selectedCardId?: string | null) {
+  const { height: screenHeight } = Dimensions.get("screen")
   const positionY = useSharedValue(0)
   const cardRef = useRef<View>(null)
   const insets = useSafeAreaInsets()

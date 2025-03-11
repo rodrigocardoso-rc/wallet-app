@@ -7,8 +7,8 @@ import { SCREENS_NAME } from "../ScreensName"
 import { LargeWallet, SmallWallet } from "../../assets/Images";
 import Background from "../../components/Background/Background";
 import { RootStackNavigationProp, RootStackParamList } from "../../navigators/AppNavigator"
-import useCardList from "../../hooks/useCardList";
-import useImageAnimation from "../../hooks/useImageAnimation";
+import useCardList from "../../hooks/UseCardList/useCardList";
+import useImageAnimation from "../../hooks/UseImageAnimation/useImageAnimation";
 
 import styles from "./styles";
 

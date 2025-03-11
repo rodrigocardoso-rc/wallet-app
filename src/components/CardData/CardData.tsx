@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle } from "react-native-reanimated"
 
 import Text from "../Text/Text";
 import * as CardMasks from '../../utils/Mask/CardMasks/CardMasks'
-import useCardAnimation, { CARD_HEIGHT, OVERLAP,  } from "../../hooks/useCardAnimation"
+import useCardAnimation, { CARD_HEIGHT, OVERLAP,  } from "../../hooks/UseCardAnimation/useCardAnimation"
 import { ICardTyped } from "../../@types/CardsTyped"
 
 import styles from "./styles"

@@ -3,7 +3,7 @@ import { StyleProp, TextStyle } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import TYPOGRAPHY, { TVariantText } from '../../styles/Typography';
-import useTitleAnimation from '../../hooks/useTitleAnimation';
+import useTitleAnimation from '../../hooks/UseTitleAnimation/useTitleAnimation';
 
 interface ITextProps {
   variant: TVariantText;

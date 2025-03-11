@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Easing, useSharedValue, withTiming } from "react-native-reanimated";
 
-
 export default function useButtonAnimation() {
   const buttonPosition = useSharedValue(50)
 
