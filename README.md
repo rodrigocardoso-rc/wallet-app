@@ -4,6 +4,12 @@ Projeto desenvolvido como parte de um teste técnico. Consiste em uma carteira v
 
 ---
 
+## 📹 Demonstração do App
+
+-   Aqui está a animação do aplicativo:
+
+![Animação do App](https://raw.githubusercontent.com/rodrigocardoso-rc/wallet-app/master/src/assets/gif/demo.gif)
+
 ## 🚀 Funcionalidades
 
 -   Visualizar lista de cartões cadastrados.
