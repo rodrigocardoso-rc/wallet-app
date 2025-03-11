@@ -3,8 +3,10 @@ import COLORS from '../../styles/Colors'
 import SPACING from '../../styles/Spacing'
 
 export default StyleSheet.create({
-  cardWrapper: {
-    width: '100%'
+  animatedContainer: {
+    width: '100%',
+    borderRadius: SPACING.borderRadius.large,
+    paddingHorizontal: SPACING.padding.large,
   },
   green: {
     backgroundColor: COLORS.base.greenLight,
@@ -17,8 +19,6 @@ export default StyleSheet.create({
   container: {
     width: '100%',
     gap: 40,
-    borderRadius: SPACING.borderRadius.large,
-    paddingHorizontal: SPACING.padding.large,
     paddingVertical: 40,
   },
   containerText: {

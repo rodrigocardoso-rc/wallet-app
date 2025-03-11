@@ -1,10 +1,10 @@
 import React from "react"
-import { View, TouchableWithoutFeedback } from "react-native"
+import { View, TouchableWithoutFeedback, TouchableOpacity } from "react-native"
 import Animated, { useAnimatedStyle } from "react-native-reanimated"
 
 import Text from "../Text/Text";
 import * as CardMasks from '../../utils/Mask/CardMasks/CardMasks'
-import useCardAnimation, { CARD_HEIGHT, OVERLAP,  } from "../../hooks/UseCardAnimation/useCardAnimation"
+import useCardAnimation, { CARD_HEIGHT, OVERLAP, } from "../../hooks/UseCardAnimation/useCardAnimation"
 import { ICardTyped } from "../../@types/CardsTyped"
 
 import styles from "./styles"
@@ -34,18 +34,20 @@ export default function CardData({
   }))
 
   return (
-    <TouchableWithoutFeedback
-      onPress={onPress}
-      style={styles.cardWrapper}>
-      <Animated.View
-        ref={cardRef}
-        style={[
-          styles.container,
-          styles[type],
-          animatedStyle,
-          index > 0 && { marginTop: -(CARD_HEIGHT - OVERLAP) },
-          unfocused && styles.unfocused
-        ]}>
+
+    <Animated.View
+      ref={cardRef}
+      style={[
+        styles.animatedContainer,
+        styles[type],
+        animatedStyle,
+        index > 0 && { marginTop: -(CARD_HEIGHT - OVERLAP) },
+        unfocused && styles.unfocused
+      ]}>
+      <TouchableOpacity
+        activeOpacity={0}
+        onPress={onPress}
+        style={styles.container}>
         <Text
           variant={"h5"}
           color={styles[type].color}>
@@ -71,7 +73,7 @@ export default function CardData({
             Validade: {CardMasks.applyMaskExpirationDate(expirationDate)}
           </Text>
         </View>
-      </Animated.View>
-    </TouchableWithoutFeedback>
+      </TouchableOpacity>
+    </Animated.View >
   )
 }
