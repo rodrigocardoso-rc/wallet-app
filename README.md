@@ -8,7 +8,7 @@ Projeto desenvolvido como parte de um teste técnico. Consiste em uma carteira v
 
 -   Aqui está a animação do aplicativo:
 
-![Animação do App](https://raw.githubusercontent.com/rodrigocardoso-rc/wallet-app/master/src/assets/Gifs/app-demo.gif)
+![Animação do App](https://raw.githubusercontent.com/rodrigocardoso-rc/wallet-app/master/src/assets/Gifs/demo.gif)
 
 ## 🚀 Funcionalidades
 
