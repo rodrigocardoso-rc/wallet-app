@@ -47,5 +47,6 @@
     "ts-jest": "^29.2.6",
     "typescript": "^5.8.2"
   },
-  "private": true
+  "private": true,
+  "node": "20.x"
 }
